@@ -28,6 +28,6 @@ public interface View {
     public static final String SETTINGS = "settings";
     public static final String ABOUT = "about";
     
-    public static final String IMAGE_ICON = "/com/view/image/Main.png";
+    public static final String IMAGE_ICON = "/com/view/image/Logo.png";
     public static final String IMAGE_ABOUT = "/com/view/image/About.png";
 }

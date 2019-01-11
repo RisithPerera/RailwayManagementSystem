@@ -20,7 +20,9 @@ public interface Data {
     public static final String NORMAL_ORDER = "NormalOrder";
     public static final String NORMAL_ORDER_DATA  = "NormalOrderData";
     public static final String USER = "User";
-    
+
+    public static final String MENU_LIST[] = {"Journey","Train","Clients","Booking","About"};
+
     public static final String DISTRICTS[] = {"Kalutara","Colombo","Ampara","Anuradhapura","Badulla","Batticaloa","Galle","Gampaha","Hambantota","Jaffna","Kandy","Kegalle","Kurunegala","Mannar","Matale","Matara","Moneragala","Mullaitivu","Nuwara Eliya","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya"};
     public static final String USER_TYPE[] = {"Admin","Clerk","Audit"};
     public static final String YEARS[] = {"2018","2019"};    

@@ -2,7 +2,9 @@ package com.view.ctrl;
 
 
 import com.main.Main;
+import com.manifest.Data;
 import com.manifest.View;
+import com.model.child.Customer;
 import com.model.child.User;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -10,6 +12,8 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,7 +22,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -34,7 +42,7 @@ public class MainCtrl {
     private AnchorPane contentPane;
 
     @FXML
-    private VBox menuList;
+    private ListView menuListView;
 
     @FXML
     private Label currentTimeText;
@@ -45,7 +53,7 @@ public class MainCtrl {
     //---------------------- Normal Attributes -------------------------------//
     private static MainCtrl mainCtrl;   
     private Stage primaryStage;
-    
+
     public static MainCtrl getInstance() {
         return mainCtrl;
     }
@@ -55,42 +63,48 @@ public class MainCtrl {
         mainCtrl = this;
         primaryStage = Main.primaryStage;
         currentTimeText.textProperty().bind(Main.timeTask.messageProperty());
-        
+
         //-------------------------- Add Menu List Event ---------------------------//
-        for(Node menuItem: menuList.getChildren()){
-            menuItem.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    menuListEvent(menuItem.getId());
+        menuListView.getItems().addAll(Data.MENU_LIST);
+        menuListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        menuListView.setCellFactory(param -> new ListCell<String>() {
+            private ImageView imageView = new ImageView();
+
+            @Override
+            public void updateItem(String name, boolean empty) {
+                super.updateItem(name, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    imageView.setImage(new Image(String.format("/com/view/image/%s.png",name)));
+                    imageView.setFitWidth(30);
+                    imageView.setFitHeight(30);
+                    setText(name);
+                    setGraphic(imageView);
                 }
-            });
-        }
-        menuListEvent("home");
+            }
+        });
     }
 
     //---------------------- Nodes Events ------------------------------------//
-    void menuListEvent(String item){
-        try {
-            switch (item) {
-                case "home":
+    @FXML
+    public void menuListViewEvent(MouseEvent event) {
+        try{
+            switch((String) menuListView.getSelectionModel().getSelectedItem()){
+                case "Journey" :
                     showContent(String.format(View.PATH, View.DASHBOARD));
                     break;
-                case "purchaseNormal":
+                case "Train" :
                     showContent(String.format(View.PATH, View.NORMAL_ORDER_VIEW));
                     break;
-                case "purchaseCustomer":
+                case "Clients" :
                     showContent(String.format(View.PATH, View.CUSTOMER_ORDER_VIEW));
                     break;
-                case "customer":
-                    showContent(String.format(View.PATH, View.CUSTOMER_VIEW));
-                    break;
-                case "analysis":
+                case "Booking" :
                     showContent(String.format(View.PATH, View.ANALYSIS));
                     break;
-                case "settings":
-                    showContent(String.format(View.PATH, View.SETTINGS));
-                    break;
-                case "about":
+                case "About":
                     showAbout(String.format(View.PATH, View.ABOUT));
             }
         } catch (IOException ex) {
