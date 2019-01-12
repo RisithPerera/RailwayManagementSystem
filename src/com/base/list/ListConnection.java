@@ -6,12 +6,8 @@
 package com.base.list;
 
 
-import com.model.child.Customer;
-import com.model.child.CustomerOrder;
-import com.model.child.CustomerOrderData;
-import com.model.child.NormalOrder;
-import com.model.child.NormalOrderData;
-import com.model.child.User;
+import com.model.child.*;
+import com.model.child.Commuter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -23,7 +19,7 @@ public class ListConnection {
 
     private static ListConnection listConnection;
 
-    private final ObservableList<Customer> customerList;
+    private final ObservableList<Commuter> commuterList;
     private final ObservableList<CustomerOrder> customerOrderList;
     private final ObservableList<CustomerOrderData> customerOrderDataList;
     private final ObservableList<NormalOrder> normalOrderList;
@@ -31,7 +27,7 @@ public class ListConnection {
     private final ObservableList<User> userList;
 
     private ListConnection() {
-        this.customerList = FXCollections.observableArrayList();
+        this.commuterList = FXCollections.observableArrayList();
         this.customerOrderList = FXCollections.observableArrayList();
         this.customerOrderDataList = FXCollections.observableArrayList();
         this.normalOrderList = FXCollections.observableArrayList();
@@ -47,8 +43,8 @@ public class ListConnection {
         return listConnection;
     }
 
-    public ObservableList<Customer> getCustomerList() {
-        return customerList;
+    public ObservableList<Commuter> getCommuterList() {
+        return commuterList;
     }
 
     public ObservableList<CustomerOrder> getCustomerOrderList() {

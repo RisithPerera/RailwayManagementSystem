@@ -10,11 +10,10 @@ package com.base.client.impl;
 import com.base.client.CustomerOrderClient;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
-import com.model.child.Customer;
-import com.model.child.CustomerOrder;
+import com.model.child.Commuter;
+
 import java.sql.*;
 
-import com.model.child.CustomerOrderData;
 import javafx.collections.ObservableList;
 
 /**
@@ -24,11 +23,11 @@ import javafx.collections.ObservableList;
 public class CustomerOrderClientImpl implements CustomerOrderClient{ 
     
     private static CustomerOrderClientImpl customerOrderClient;
-    private static ObservableList<Customer> customerList;
+    private static ObservableList<Commuter> commuterList;
     private static ObservableList<CustomerOrder> customerOrderList;
 
     private CustomerOrderClientImpl() {
-        customerList = ListConnection.getInstance().getCustomerList();
+        commuterList = ListConnection.getInstance().getCommuterList();
         customerOrderList = ListConnection.getInstance().getCustomerOrderList();
     }
   
@@ -42,7 +41,7 @@ public class CustomerOrderClientImpl implements CustomerOrderClient{
     @Override
     public boolean add(CustomerOrder customerOrder, ObservableList<CustomerOrderData> customerOrderDataList) throws SQLException, ClassNotFoundException {
 
-        if (customerOrder == null || customerOrder.getCustomer() == null || customerOrderDataList == null) {
+        if (customerOrder == null || customerOrder.getCommuter() == null || customerOrderDataList == null) {
             System.out.println("XXXXXXXXX");
             return false;
         }
@@ -55,7 +54,7 @@ public class CustomerOrderClientImpl implements CustomerOrderClient{
             state.setObject(1, customerOrder.getDate());
             state.setObject(2, customerOrder.getTime());
             state.setObject(3, customerOrder.getId());
-            state.setObject(4, customerOrder.getCustomer().getId());
+            state.setObject(4, customerOrder.getCommuter().getId());
 
             if (state.executeUpdate() > 0) {
                 if (CustomerOrderDataClientImpl.getInstance().add(customerOrderDataList)) {
@@ -104,13 +103,13 @@ public class CustomerOrderClientImpl implements CustomerOrderClient{
             customerOrder.setDate(result.getString(1));
             customerOrder.setTime(result.getString(2));
             customerOrder.setId(result.getInt(3));
-            if(customerList.isEmpty()){
-                CustomerClientImpl.getInstance().loadAll();
+            if(commuterList.isEmpty()){
+                CommuterClientImpl.getInstance().loadAll();
             }
-            customerOrder.setCustomer(CustomerClientImpl.getInstance().search(result.getInt(4)));
-            if(customerOrder.getCustomer() !=  null) customerOrderList.add(customerOrder);
+            customerOrder.setCommuter(CommuterClientImpl.getInstance().search(result.getInt(4)));
+            if(customerOrder.getCommuter() !=  null) customerOrderList.add(customerOrder);
         }
-        System.out.println("Customer Order List Loaded : " + customerOrderList.size());
+        System.out.println("Commuter Order List Loaded : " + customerOrderList.size());
     }
 
     @Override

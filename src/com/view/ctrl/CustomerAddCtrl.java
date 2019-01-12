@@ -5,12 +5,12 @@
  */
 package com.view.ctrl;
 
-import com.base.client.impl.CustomerClientImpl;
+import com.base.client.impl.CommuterClientImpl;
 import com.manifest.Data;
 import com.manifest.Message;
 import com.manifest.State;
 import com.manifest.View;
-import com.model.child.Customer;
+import com.model.child.Commuter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,8 +28,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
-import static com.base.client.impl.CustomerClientImpl.*;
 
 /**
  * FXML Controller class
@@ -61,7 +59,7 @@ public class CustomerAddCtrl implements Initializable {
      */
     
     State.ControllerType controllerType;
-    private Customer selectedCustomer;
+    private Commuter selectedCommuter;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,7 +80,7 @@ public class CustomerAddCtrl implements Initializable {
         try {
             MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_VIEW));
         } catch (IOException ex) {
-            Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -117,11 +115,11 @@ public class CustomerAddCtrl implements Initializable {
      
     public void prepareCustomerAddView() { 
         controllerType = State.ControllerType.CUSTOMER_ADD;
-        selectedCustomer = null;
+        selectedCommuter = null;
         saveBtn.setText("Save");
 
         try {
-            idText.setText(Integer.toString(CustomerClientImpl.getInstance().getNextId()));
+            idText.setText(Integer.toString(CommuterClientImpl.getInstance().getNextId()));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -133,52 +131,52 @@ public class CustomerAddCtrl implements Initializable {
         expDateText.setValue(localDate.plusDays(180));     
     }
     
-    public void prepareCustomerUpdateView(Customer customer) {  
+    public void prepareCustomerUpdateView(Commuter commuter) {
         controllerType = State.ControllerType.CUSTOMER_UPDATE;
-        selectedCustomer = customer;
+        selectedCommuter = commuter;
         saveBtn.setText("Update"); 
 
-        idText.setText(Integer.toString(customer.getId()));
-        fNameText.setText(customer.getFName()); 
-        lNameText.setText(customer.getLName());      
-        streetText.setText(customer.getStreet());    
-        cityText.setText(customer.getCity());   
-        districtChoice.getSelectionModel().select(customer.getDistrict());
-        yearCombo.getSelectionModel().select(Integer.toString(LocalDate.parse(customer.getDob()).getYear()));
-        monthCombo.getSelectionModel().select(LocalDate.parse(customer.getDob()).getMonthValue() - 1);
-        dayCombo.getSelectionModel().select(LocalDate.parse(customer.getDob()).getDayOfMonth() - 1);
-        nicNoText.setText(customer.getNicNo());     
-        licNoText.setText(customer.getLicNo());     
-        teleNoText.setText(customer.getTeleNo()); 
-        whatsappText.setText(customer.getWhatsappNo()); 
-        viberText.setText(customer.getViberNo());   
-        emailText.setText(customer.getEmail());     
-        issueDateText.setValue(LocalDate.parse(customer.getIssueDate(), DateTimeFormatter.ISO_DATE));
-        expDateText.setValue(LocalDate.parse(customer.getExpireDate(), DateTimeFormatter.ISO_DATE));
+        idText.setText(Integer.toString(commuter.getId()));
+        fNameText.setText(commuter.getFName());
+        lNameText.setText(commuter.getLName());
+        streetText.setText(commuter.getStreet());
+        cityText.setText(commuter.getCity());
+        districtChoice.getSelectionModel().select(commuter.getDistrict());
+        yearCombo.getSelectionModel().select(Integer.toString(LocalDate.parse(commuter.getDob()).getYear()));
+        monthCombo.getSelectionModel().select(LocalDate.parse(commuter.getDob()).getMonthValue() - 1);
+        dayCombo.getSelectionModel().select(LocalDate.parse(commuter.getDob()).getDayOfMonth() - 1);
+        nicNoText.setText(commuter.getNicNo());
+        licNoText.setText(commuter.getLicNo());
+        teleNoText.setText(commuter.getTeleNo());
+        whatsappText.setText(commuter.getWhatsappNo());
+        viberText.setText(commuter.getViberNo());
+        emailText.setText(commuter.getEmail());
+        issueDateText.setValue(LocalDate.parse(commuter.getIssueDate(), DateTimeFormatter.ISO_DATE));
+        expDateText.setValue(LocalDate.parse(commuter.getExpireDate(), DateTimeFormatter.ISO_DATE));
     }
     
     private void createCustomerAdd() {
-        selectedCustomer = new Customer();
-        selectedCustomer.setDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));   
-        selectedCustomer.setTime(new SimpleDateFormat("hh:mm:ss").format(new Date()));    
-        selectedCustomer.setId(Integer.parseInt(idText.getText()));
-        selectedCustomer.setFName(fNameText.getText()); 
-        selectedCustomer.setLName(lNameText.getText());      
-        selectedCustomer.setStreet(streetText.getText());    
-        selectedCustomer.setCity(cityText.getText());
-        selectedCustomer.setDistrict(districtChoice.getSelectionModel().getSelectedItem());
-        selectedCustomer.setDob(yearCombo.getSelectionModel().getSelectedItem() + "-" + String.format("%02d", monthCombo.getSelectionModel().getSelectedIndex() + 1) + "-" + dayCombo.getSelectionModel().getSelectedItem());
-        selectedCustomer.setNicNo(nicNoText.getText());     
-        selectedCustomer.setLicNo(licNoText.getText());     
-        selectedCustomer.setTeleNo(teleNoText.getText());     
-        selectedCustomer.setWhatsappNo(whatsappText.getText()); 
-        selectedCustomer.setViberNo(viberText.getText());   
-        selectedCustomer.setEmail(emailText.getText());     
-        selectedCustomer.setIssueDate(issueDateText.getValue().toString());
-        selectedCustomer.setExpireDate(expDateText.getValue().toString());
-        selectedCustomer.setPoints(0);
+        selectedCommuter = new Commuter();
+        selectedCommuter.setDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        selectedCommuter.setTime(new SimpleDateFormat("hh:mm:ss").format(new Date()));
+        selectedCommuter.setId(Integer.parseInt(idText.getText()));
+        selectedCommuter.setFName(fNameText.getText());
+        selectedCommuter.setLName(lNameText.getText());
+        selectedCommuter.setStreet(streetText.getText());
+        selectedCommuter.setCity(cityText.getText());
+        selectedCommuter.setDistrict(districtChoice.getSelectionModel().getSelectedItem());
+        selectedCommuter.setDob(yearCombo.getSelectionModel().getSelectedItem() + "-" + String.format("%02d", monthCombo.getSelectionModel().getSelectedIndex() + 1) + "-" + dayCombo.getSelectionModel().getSelectedItem());
+        selectedCommuter.setNicNo(nicNoText.getText());
+        selectedCommuter.setLicNo(licNoText.getText());
+        selectedCommuter.setTeleNo(teleNoText.getText());
+        selectedCommuter.setWhatsappNo(whatsappText.getText());
+        selectedCommuter.setViberNo(viberText.getText());
+        selectedCommuter.setEmail(emailText.getText());
+        selectedCommuter.setIssueDate(issueDateText.getValue().toString());
+        selectedCommuter.setExpireDate(expDateText.getValue().toString());
+        selectedCommuter.setPoints(0);
         try {
-            if(CustomerClientImpl.getInstance().add(selectedCustomer)){
+            if(CommuterClientImpl.getInstance().add(selectedCommuter)){
                 MessageBoxViewCtrl.display(Message.TITLE,String.format(Message.ADD, Data.CUSTOMER));
                 MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_VIEW));
             }else{
@@ -194,23 +192,23 @@ public class CustomerAddCtrl implements Initializable {
     }
 
     private void createCustomerUpdate() {
-        if(selectedCustomer != null){
-            selectedCustomer.setFName(fNameText.getText()); 
-            selectedCustomer.setLName(lNameText.getText());      
-            selectedCustomer.setStreet(streetText.getText());    
-            selectedCustomer.setCity(cityText.getText());
-            selectedCustomer.setDistrict(districtChoice.getSelectionModel().getSelectedItem());
-            selectedCustomer.setDob(yearCombo.getSelectionModel().getSelectedItem() + "-" + String.format("%02d", monthCombo.getSelectionModel().getSelectedIndex() + 1) + "-" + dayCombo.getSelectionModel().getSelectedItem());
-            selectedCustomer.setNicNo(nicNoText.getText());     
-            selectedCustomer.setLicNo(licNoText.getText());     
-            selectedCustomer.setTeleNo(teleNoText.getText());     
-            selectedCustomer.setWhatsappNo(whatsappText.getText()); 
-            selectedCustomer.setViberNo(viberText.getText());   
-            selectedCustomer.setEmail(emailText.getText());     
-            selectedCustomer.setIssueDate(issueDateText.getValue().toString());
-            selectedCustomer.setExpireDate(expDateText.getValue().toString()); 
+        if(selectedCommuter != null){
+            selectedCommuter.setFName(fNameText.getText());
+            selectedCommuter.setLName(lNameText.getText());
+            selectedCommuter.setStreet(streetText.getText());
+            selectedCommuter.setCity(cityText.getText());
+            selectedCommuter.setDistrict(districtChoice.getSelectionModel().getSelectedItem());
+            selectedCommuter.setDob(yearCombo.getSelectionModel().getSelectedItem() + "-" + String.format("%02d", monthCombo.getSelectionModel().getSelectedIndex() + 1) + "-" + dayCombo.getSelectionModel().getSelectedItem());
+            selectedCommuter.setNicNo(nicNoText.getText());
+            selectedCommuter.setLicNo(licNoText.getText());
+            selectedCommuter.setTeleNo(teleNoText.getText());
+            selectedCommuter.setWhatsappNo(whatsappText.getText());
+            selectedCommuter.setViberNo(viberText.getText());
+            selectedCommuter.setEmail(emailText.getText());
+            selectedCommuter.setIssueDate(issueDateText.getValue().toString());
+            selectedCommuter.setExpireDate(expDateText.getValue().toString());
             try {
-                if(CustomerClientImpl.getInstance().update(selectedCustomer)){
+                if(CommuterClientImpl.getInstance().update(selectedCommuter)){
                     MessageBoxViewCtrl.display(Message.TITLE,String.format(Message.UPDATE, Data.CUSTOMER));
                     MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_VIEW));
                 }else{
@@ -224,13 +222,13 @@ public class CustomerAddCtrl implements Initializable {
                 MessageBoxViewCtrl.displayError(e.getClass().getSimpleName(),e.getMessage());
             }
         }else{
-            MessageBoxViewCtrl.display(Message.TITLE,"Selected Customer Is Null Object");
+            MessageBoxViewCtrl.display(Message.TITLE,"Selected Commuter Is Null Object");
         }
 
     }
     
     private void clearFields(){
-        selectedCustomer = null;
+        selectedCommuter = null;
         fNameText.clear();
         lNameText.clear();
         streetText.clear();

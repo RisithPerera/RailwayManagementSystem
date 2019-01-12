@@ -5,8 +5,6 @@
  */
 package com.base.client;
 
-import com.model.child.CustomerOrder;
-import com.model.child.CustomerOrderData;
 import java.sql.SQLException;
 import javafx.collections.ObservableList;
 

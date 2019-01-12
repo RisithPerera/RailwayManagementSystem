@@ -8,15 +8,9 @@ package com.base.client.impl;
 import com.base.client.NormalOrderClient;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
-import com.manifest.Data;
-import com.manifest.Symbol;
-import com.model.child.CustomerOrder;
-import com.model.child.NormalOrder;
-import java.io.IOException;
-import java.sql.*;
-import java.util.Collections;
 
-import com.model.child.NormalOrderData;
+import java.sql.*;
+
 import javafx.collections.ObservableList;
 
 /**

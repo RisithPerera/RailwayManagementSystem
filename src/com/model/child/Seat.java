@@ -1,0 +1,95 @@
+package com.model.child;
+
+import com.manifest.Symbol;
+import com.model.superb.SuperModel;
+
+import java.util.Objects;
+
+public class Seat extends SuperModel {
+
+    private char seatCol;
+    private int seatRow;
+    private Compartment compartment;
+    private int comfortType;
+    private boolean isAvailbale;
+
+    public Seat() {}
+
+    public Seat(char seatCol, int seatRow, Compartment compartment, int comfortType, boolean isAvailbale) {
+        this.seatCol = seatCol;
+        this.seatRow = seatRow;
+        this.compartment = compartment;
+        this.comfortType = comfortType;
+        this.isAvailbale = isAvailbale;
+    }
+
+    public char getSeatCol() {
+        return seatCol;
+    }
+
+    public void setSeatCol(char seatCol) {
+        this.seatCol = seatCol;
+    }
+
+    public int getSeatRow() {
+        return seatRow;
+    }
+
+    public void setSeatRow(int seatRow) {
+        this.seatRow = seatRow;
+    }
+
+    public Compartment getCompartment() {
+        return compartment;
+    }
+
+    public void setCompartment(Compartment compartment) {
+        this.compartment = compartment;
+    }
+
+    public int getComfortType() {
+        return comfortType;
+    }
+
+    public void setComfortType(int comfortType) {
+        this.comfortType = comfortType;
+    }
+
+    public boolean isAvailbale() {
+        return isAvailbale;
+    }
+
+    public void setAvailbale(boolean availbale) {
+        isAvailbale = availbale;
+    }
+
+    //---------------------------- Custom Methods   -----------------------------//
+
+    public String getId(){
+        return this.compartment.getId()+":"+this.getSeatCol()+this.getSeatRow();
+    }
+    //---------------------------- Override Methods -----------------------------//
+
+    @Override
+    public String toString() {
+        return  getSeatCol()     + Symbol.SPLIT +
+                getSeatRow()     + Symbol.SPLIT +
+                getCompartment() + Symbol.SPLIT +
+                getComfortType() + Symbol.SPLIT +
+                isAvailbale();
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Seat) {
+            return ((Seat)obj).getId().equals(this.getId());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = Objects.hashCode(String.format("%05d", this.getId()));
+        return hash;
+    }
+}

@@ -14,7 +14,7 @@ public interface Data {
     
     public static String PATH = "database/%sBase/%s.txt";
         
-    public static final String CUSTOMER = "Customer";
+    public static final String CUSTOMER = "Commuter";
     public static final String CUSTOMER_ORDER = "CustomerOrder";
     public static final String CUSTOMER_ORDER_DATA = "CustomerOrderData";
     public static final String NORMAL_ORDER = "NormalOrder";

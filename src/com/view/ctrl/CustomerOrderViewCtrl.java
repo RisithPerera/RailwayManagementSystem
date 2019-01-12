@@ -5,15 +5,12 @@
  */
 package com.view.ctrl;
 
-import com.base.client.impl.CustomerOrderClientImpl;
 import com.base.client.impl.CustomerOrderDataClientImpl;
 import com.base.list.ListConnection;
 import com.manifest.Data;
-import com.manifest.Message;
 import com.manifest.View;
-import com.model.child.Customer;
-import com.model.child.CustomerOrder;
-import com.model.child.CustomerOrderData;
+import com.model.child.Commuter;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -23,20 +20,16 @@ import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
+
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -117,7 +110,7 @@ public class CustomerOrderViewCtrl implements Initializable {
             CustomerOrderAddCtrl addCtrl = (CustomerOrderAddCtrl) MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_ORDER_ADD));
             addCtrl.prepareCustomerOrderAddView(null);
         } catch (IOException ex) {
-            Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -229,12 +222,12 @@ public class CustomerOrderViewCtrl implements Initializable {
         orderTable.getItems().setAll(subentries);
     }   
     
-    public void updateTableDataByCustomer(Customer customer){
+    public void updateTableDataByCustomer(Commuter commuter){
         try{
             orderTable.getItems().setAll(customerOrderList);
             Iterator<CustomerOrder> iterator = orderTable.getItems().iterator();
             while(iterator.hasNext()){  
-                if(!(iterator.next().getId() == customer.getId())){
+                if(!(iterator.next().getId() == commuter.getId())){
                     iterator.remove();
                 }
             }
@@ -275,7 +268,7 @@ public class CustomerOrderViewCtrl implements Initializable {
                     }
                     orderTable.getItems().remove(selectedCustomerOrder);
                 } catch (IOException ex) {
-                    Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
 
@@ -285,7 +278,7 @@ public class CustomerOrderViewCtrl implements Initializable {
                     CustomerOrderAddCtrl ctrl = (CustomerOrderAddCtrl) MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_ORDER_ADD));
                     ctrl.prepareCustomerOrderUpdateView(selectedCustomerOrder);
                 } catch (IOException ex) {
-                    Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
 
@@ -315,7 +308,7 @@ public class CustomerOrderViewCtrl implements Initializable {
                         MessageBoxViewCtrl.display(Message.TITLE,String.format(Message.UNSUCESS, Data.CUSTOMER_ORDER_DATA));
                     }
                 } catch (IOException ex) {
-                    Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
 

@@ -5,17 +5,19 @@
  */
 package com.view.ctrl;
 
-import com.base.client.impl.CustomerClientImpl;
+import com.base.client.impl.CommuterClientImpl;
 import com.manifest.Data;
 import com.manifest.Message;
 import com.manifest.View;
-import com.model.child.Customer;
+import com.model.child.Commuter;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,8 +26,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
@@ -39,21 +39,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author RISITH-PC
  */
-public class CustomerViewCtrl implements Initializable {
+public class ClientsViewCtrl implements Initializable {
 
     @FXML
-    private TableView<Customer> customerTable;
+    private TableView<Commuter> customerTable;
     
     @FXML
-    private TableColumn<Customer, String> dateCol, idCol,  nameCol, addressCol, ageCol, identityCol;
+    private TableColumn<Commuter, String> dateCol, idCol,  nameCol, addressCol, ageCol, identityCol;
     
     @FXML
-    private TableColumn<Customer, String> contactsCol, periodCol, pointsCol;
+    private TableColumn<Commuter, String> contactsCol, periodCol, pointsCol;
     
     @FXML
     private TextField searchCustomerText;
    
-    private ObservableList<Customer> customerList;
+    private ObservableList<Commuter> commuterList;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -68,8 +68,8 @@ public class CustomerViewCtrl implements Initializable {
         periodCol.setCellValueFactory(new PropertyValueFactory<>("period"));
         pointsCol.setCellValueFactory(new PropertyValueFactory<>("points"));
 
-        customerList = CustomerClientImpl.getInstance().getAll();
-        customerTable.getItems().setAll(customerList);
+        commuterList = CommuterClientImpl.getInstance().getAll();
+        customerTable.getItems().setAll(commuterList);
             // TODO
 
         
@@ -91,19 +91,19 @@ public class CustomerViewCtrl implements Initializable {
             CustomerAddCtrl customerAddCtrl = (CustomerAddCtrl) MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_ADD));
             customerAddCtrl.prepareCustomerAddView();
         } catch (IOException ex) {
-            Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void searchCustomer(String oldText, String newText) {
         if ( oldText != null && (newText.length() < oldText.length()) ) {
-            customerTable.getItems().setAll(customerList);
+            customerTable.getItems().setAll(commuterList);
         }
          
         String[] parts = newText.toUpperCase().split(" ");
 
-        ObservableList<Customer> subentries = FXCollections.observableArrayList();
-        for(Customer entry: customerTable.getItems()){
+        ObservableList<Commuter> subentries = FXCollections.observableArrayList();
+        for(Commuter entry: customerTable.getItems()){
             boolean match = true;
             for ( String part: parts ) {
                 if ( ! entry.toString().toUpperCase().contains(part) ) {
@@ -120,43 +120,43 @@ public class CustomerViewCtrl implements Initializable {
     }   
     
     private void setTableMenu() {
-        customerTable.setRowFactory((TableView<Customer> tableView) -> {
-            TableRow<Customer> row = new TableRow<>();
+        customerTable.setRowFactory((TableView<Commuter> tableView) -> {
+            TableRow<Commuter> row = new TableRow<>();
             ContextMenu contextMenu = new ContextMenu();
             MenuItem addMenu = new MenuItem("Add Purchase");
             MenuItem viewMenu = new MenuItem("View Purchases");
-            MenuItem editMenu = new MenuItem("Edit Customer");
-            MenuItem deleteMenu = new MenuItem("Delete Customer");
+            MenuItem editMenu = new MenuItem("Edit Commuter");
+            MenuItem deleteMenu = new MenuItem("Delete Commuter");
             
             addMenu.setOnAction((ActionEvent event) -> {                         
                 try{    
-                    Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
+                    Commuter selectedCommuter = customerTable.getSelectionModel().getSelectedItem();
                     CustomerOrderAddCtrl ctrl = (CustomerOrderAddCtrl) MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_ORDER_ADD));
-                    ctrl.prepareCustomerOrderAddView(selectedCustomer);
+                    ctrl.prepareCustomerOrderAddView(selectedCommuter);
                 } catch (IOException ex) {
-                    Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
             
             viewMenu.setOnAction((ActionEvent event) -> {                         
                 try{    
-                    Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
+                    Commuter selectedCommuter = customerTable.getSelectionModel().getSelectedItem();
                     CustomerOrderViewCtrl ctrl = (CustomerOrderViewCtrl) MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_ORDER_VIEW));
-                    ctrl.updateTableDataByCustomer(selectedCustomer);
+                    ctrl.updateTableDataByCustomer(selectedCommuter);
                 } catch (IOException ex) {
-                    Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
             
             deleteMenu.setOnAction((ActionEvent event) -> {                         
                 try {
-                    Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();                    
-                    if (CustomerClientImpl.getInstance().delete(selectedCustomer.getId())) {
+                    Commuter selectedCommuter = customerTable.getSelectionModel().getSelectedItem();
+                    if (CommuterClientImpl.getInstance().delete(selectedCommuter.getId())) {
                         MessageBoxViewCtrl.display(Message.TITLE,String.format(Message.DELETE, Data.CUSTOMER));
                     }else{
                         MessageBoxViewCtrl.display(Message.TITLE,String.format(Message.UNSUCESS, Data.CUSTOMER));
                     }
-                    customerTable.getItems().setAll(CustomerClientImpl.getInstance().getAll());
+                    customerTable.getItems().setAll(CommuterClientImpl.getInstance().getAll());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
@@ -166,11 +166,11 @@ public class CustomerViewCtrl implements Initializable {
             
             editMenu.setOnAction((ActionEvent event) -> {                                        
                 try{    
-                    Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
+                    Commuter selectedCommuter = customerTable.getSelectionModel().getSelectedItem();
                     CustomerAddCtrl ctrl = (CustomerAddCtrl) MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_ADD));
-                    ctrl.prepareCustomerUpdateView(selectedCustomer);
+                    ctrl.prepareCustomerUpdateView(selectedCommuter);
                 } catch (IOException ex) {
-                    Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
             

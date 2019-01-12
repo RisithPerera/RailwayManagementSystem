@@ -5,7 +5,7 @@
  */
 package com.base.client;
 
-import com.model.child.Customer;
+import com.model.child.Commuter;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
@@ -15,12 +15,11 @@ import java.sql.SQLException;
  *
  * @author RISITH-PC
  */
-public interface CustomerClient {
-    public boolean add(Customer customer) throws SQLException, ClassNotFoundException;
-    public boolean update(Customer customer) throws SQLException, ClassNotFoundException;
-    public Customer search(int t);
+public interface CommuterClient {
+    public boolean add(Commuter commuter) throws SQLException, ClassNotFoundException;
+    public Commuter search(int t);
     public boolean delete(int t) throws SQLException, ClassNotFoundException;
-    public ObservableList<Customer> getAll();
+    public ObservableList<Commuter> getAll();
     public void loadAll() throws SQLException, ClassNotFoundException;
     public int getNextId() throws SQLException, ClassNotFoundException;
 }

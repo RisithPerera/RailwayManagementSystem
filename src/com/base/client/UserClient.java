@@ -5,7 +5,6 @@
  */
 package com.base.client;
 
-import com.model.child.User;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;

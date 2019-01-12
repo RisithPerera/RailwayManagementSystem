@@ -9,14 +9,9 @@ package com.base.client.impl;
 import com.base.client.NormalOrderDataClient;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
-import com.manifest.Data;
-import com.model.child.CustomerOrder;
-import com.model.child.CustomerOrderData;
-import com.model.child.NormalOrder;
-import com.model.child.NormalOrderData;
-import java.io.IOException;
+
 import java.sql.*;
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 
 /**

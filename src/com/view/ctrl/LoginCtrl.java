@@ -4,7 +4,7 @@ import com.base.client.impl.UserClientImpl;
 import com.main.Main;
 import com.manifest.Message;
 import com.manifest.View;
-import com.model.child.User;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

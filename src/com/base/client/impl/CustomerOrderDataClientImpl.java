@@ -8,8 +8,6 @@ package com.base.client.impl;
 import com.base.client.CustomerOrderDataClient;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
-import com.model.child.CustomerOrder;
-import com.model.child.CustomerOrderData;
 
 import java.sql.*;
 
@@ -68,7 +66,7 @@ public class CustomerOrderDataClientImpl implements CustomerOrderDataClient{
             customerOrderData.setRate(result.getInt("rate"));
             customerOrderDataList.add(customerOrderData);
         }
-        System.out.println("Customer Order List Loaded : " + customerOrderDataList.size());
+        System.out.println("Commuter Order List Loaded : " + customerOrderDataList.size());
         return  customerOrderDataList;
     }
 

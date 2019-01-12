@@ -5,11 +5,9 @@
  */
 package com.main;
 
-import com.base.client.impl.CustomerClientImpl;
+import com.base.client.impl.CommuterClientImpl;
 import com.base.client.impl.CustomerOrderClientImpl;
-import com.base.client.impl.CustomerOrderDataClientImpl;
 import com.base.client.impl.NormalOrderClientImpl;
-import com.base.client.impl.NormalOrderDataClientImpl;
 import com.base.client.impl.UserClientImpl;
 import com.manifest.View;
 import java.io.IOException;
@@ -19,7 +17,6 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.view.ctrl.MessageBoxViewCtrl;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -72,7 +69,7 @@ public class Main extends Application {
     
     public static void initializeDatabase(){
         try {
-            CustomerClientImpl.getInstance().loadAll();
+            CommuterClientImpl.getInstance().loadAll();
             CustomerOrderClientImpl.getInstance().loadAll();
             NormalOrderClientImpl.getInstance().loadAll();
             UserClientImpl.getInstance().loadAll();

@@ -36,7 +36,7 @@ public class DashboardCtrl implements Initializable {
             CustomerOrderAddCtrl addCtrl = (CustomerOrderAddCtrl) MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_ORDER_ADD));
             addCtrl.prepareCustomerOrderAddView(null);
         } catch (IOException ex) {
-            Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -46,7 +46,7 @@ public class DashboardCtrl implements Initializable {
             NormalOrderAddCtrl addCtrl = (NormalOrderAddCtrl) MainCtrl.getInstance().showContent(String.format(View.PATH, View.NORMAL_ORDER_ADD));
             addCtrl.prepareNormalOrderAddView();
         } catch (IOException ex) {
-            Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -5,16 +5,13 @@
  */
 package com.view.ctrl;
 
-import com.base.client.impl.CustomerClientImpl;
+import com.base.client.impl.CommuterClientImpl;
 import com.base.client.impl.CustomerOrderClientImpl;
-import com.base.client.impl.CustomerOrderDataClientImpl;
 import com.manifest.Data;
 import com.manifest.Message;
 import com.manifest.State;
 import com.manifest.View;
-import com.model.child.Customer;
-import com.model.child.CustomerOrder;
-import com.model.child.CustomerOrderData;
+import com.model.child.Commuter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -86,7 +83,7 @@ public class CustomerOrderAddCtrl implements Initializable {
     private ObservableList<CustomerOrderData> customerOrderDataList;
     private ObservableList<CustomerTemp> customerTempList;
 
-    private Customer selectedCustomer;
+    private Commuter selectedCommuter;
     private CustomerOrder selectedCustomerOrder;
     private State.ControllerType controllerType;
 
@@ -108,7 +105,7 @@ public class CustomerOrderAddCtrl implements Initializable {
         try {
             MainCtrl.getInstance().showContent(String.format(View.PATH, View.CUSTOMER_ORDER_VIEW));
         } catch (IOException ex) {
-            Logger.getLogger(CustomerViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientsViewCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -139,8 +136,8 @@ public class CustomerOrderAddCtrl implements Initializable {
     @FXML
     void customerListEvent(MouseEvent event) {
         if (!customerListView.getSelectionModel().isEmpty()) {
-            selectedCustomer = customerListView.getSelectionModel().getSelectedItem().getCustomer();
-            customerText.setText(selectedCustomer.getIdFullName());
+            selectedCommuter = customerListView.getSelectionModel().getSelectedItem().getCommuter();
+            customerText.setText(selectedCommuter.getIdFullName());
         }
     }
 
@@ -164,8 +161,8 @@ public class CustomerOrderAddCtrl implements Initializable {
     private void searchCustomer() {
         customerTempList = FXCollections.observableArrayList();
 
-        for (Customer customer : CustomerClientImpl.getInstance().getAll()) {
-            customerTempList.add(new CustomerTemp(customer));
+        for (Commuter commuter : CommuterClientImpl.getInstance().getAll()) {
+            customerTempList.add(new CustomerTemp(commuter));
         }
 
         customerListView.setItems(customerTempList);
@@ -199,17 +196,17 @@ public class CustomerOrderAddCtrl implements Initializable {
         );
     }
 
-    public void prepareCustomerOrderAddView(Customer customer) {
+    public void prepareCustomerOrderAddView(Commuter commuter) {
         try {
             controllerType = State.ControllerType.CUSTOMER_ORDER_ADD;
             printBtn.setText("Print");
             customerOrderDataList = FXCollections.observableArrayList();
             selectedCustomerOrder = new CustomerOrder();
-            selectedCustomer = customer;
-            if (selectedCustomer == null) {
+            selectedCommuter = commuter;
+            if (selectedCommuter == null) {
                 customerText.clear();
             } else {
-                customerText.setText(selectedCustomer.getIdFullName());
+                customerText.setText(selectedCommuter.getIdFullName());
             }
             idText.setText(Integer.toString(CustomerOrderClientImpl.getInstance().getNextId()));
             customerListView.getSelectionModel().select(null);
@@ -228,9 +225,9 @@ public class CustomerOrderAddCtrl implements Initializable {
             printBtn.setText("Update");
             customerOrderDataList = CustomerOrderDataClientImpl.getInstance().getOrderData(customerOrder);
             selectedCustomerOrder = customerOrder;
-            selectedCustomer = customerOrder.getCustomer();           
+            selectedCommuter = customerOrder.getCommuter();
             idText.setText(Integer.toString(customerOrder.getId()));
-            customerText.setText(customerOrder.getCustomer().getIdFullName());
+            customerText.setText(customerOrder.getCommuter().getIdFullName());
             updateOrderDataView();
         } catch (IOException ex) {
             Logger.getLogger(CustomerOrderAddCtrl.class.getName()).log(Level.SEVERE, null, ex);
@@ -243,7 +240,7 @@ public class CustomerOrderAddCtrl implements Initializable {
             selectedCustomerOrder.setDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
             selectedCustomerOrder.setTime(new SimpleDateFormat("hh:mm:ss").format(new Date()));
             selectedCustomerOrder.setId(CustomerOrderClientImpl.getInstance().getNextId());
-            selectedCustomerOrder.setCustomer(selectedCustomer);
+            selectedCustomerOrder.setCommuter(selectedCommuter);
             if (CustomerOrderClientImpl.getInstance().add(selectedCustomerOrder, customerOrderDataList)) {
                 MessageBoxViewCtrl.display(Message.TITLE, String.format(Message.ADD, Data.CUSTOMER_ORDER));
             } else {
@@ -259,7 +256,7 @@ public class CustomerOrderAddCtrl implements Initializable {
     /*
     private void createCustomerOrderUpdate() {
          try {
-            selectedCustomerOrder.setCustomer(selectedCustomer);
+            selectedCustomerOrder.setCommuter(selectedCommuter);
             System.out.println("aaaaaa");
             CustomerOrderClientImpl.getInstance().update(selectedCustomerOrder);
             System.out.println("bbbb");
@@ -275,7 +272,7 @@ public class CustomerOrderAddCtrl implements Initializable {
     private void clearFields() {
         customerOrderDataList.clear();
         selectedCustomerOrder = null;
-        selectedCustomer = null;
+        selectedCommuter = null;
         idText.clear();
         customerText.clear();
         amountText.clear();
@@ -325,23 +322,23 @@ public class CustomerOrderAddCtrl implements Initializable {
     }
 
     private class CustomerTemp {
-        private Customer customer;
+        private Commuter commuter;
 
-        public CustomerTemp(Customer customer) {
-            this.customer = customer;
+        public CustomerTemp(Commuter commuter) {
+            this.commuter = commuter;
         }
 
-        public Customer getCustomer() {
-            return customer;
+        public Commuter getCommuter() {
+            return commuter;
         }
 
-        public void setCustomer(Customer customer) {
-            this.customer = customer;
+        public void setCommuter(Commuter commuter) {
+            this.commuter = commuter;
         }
 
         @Override
         public String toString() {
-            return customer.getId() + ": " + customer.getFullName() + ": " + customer.getDistrict();
+            return commuter.getId() + ": " + commuter.getFullName() + ": " + commuter.getDistrict();
         }
     }
 }

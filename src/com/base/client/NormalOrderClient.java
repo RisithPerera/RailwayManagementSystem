@@ -5,8 +5,6 @@
  */
 package com.base.client;
 
-import com.model.child.NormalOrder;
-import com.model.child.NormalOrderData;
 import javafx.collections.ObservableList;
 import java.sql.SQLException;
 

@@ -8,7 +8,7 @@ package com.base.client.impl;
 import com.base.client.UserClient;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
-import com.model.child.User;
+
 import java.sql.*;
 import javafx.collections.ObservableList;
 
