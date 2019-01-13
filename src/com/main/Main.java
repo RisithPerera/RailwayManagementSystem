@@ -6,9 +6,9 @@
 package com.main;
 
 import com.base.client.impl.CommuterClientImpl;
-import com.base.client.impl.CustomerOrderClientImpl;
-import com.base.client.impl.NormalOrderClientImpl;
-import com.base.client.impl.UserClientImpl;
+import com.base.client.impl2.ReservationClientImpl;
+import com.base.client.impl2.NormalOrderClientImpl;
+import com.base.client.impl2.UserClientImpl;
 import com.manifest.View;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -70,7 +70,7 @@ public class Main extends Application {
     public static void initializeDatabase(){
         try {
             CommuterClientImpl.getInstance().loadAll();
-            CustomerOrderClientImpl.getInstance().loadAll();
+            ReservationClientImpl.getInstance().loadAll();
             NormalOrderClientImpl.getInstance().loadAll();
             UserClientImpl.getInstance().loadAll();
         } catch (SQLException e) {

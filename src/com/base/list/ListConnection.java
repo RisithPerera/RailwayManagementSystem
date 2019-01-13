@@ -20,19 +20,25 @@ public class ListConnection {
     private static ListConnection listConnection;
 
     private final ObservableList<Commuter> commuterList;
-    private final ObservableList<CustomerOrder> customerOrderList;
-    private final ObservableList<CustomerOrderData> customerOrderDataList;
-    private final ObservableList<NormalOrder> normalOrderList;
-    private final ObservableList<NormalOrderData> normalOrderDataList;
-    private final ObservableList<User> userList;
+    private final ObservableList<Compartment> compartmentList;
+    private final ObservableList<Engine> engineList;
+    private final ObservableList<Journey> journeyList;
+    private final ObservableList<Officer> officerList;
+    private final ObservableList<Reservation> reservationList;
+    private final ObservableList<Seat> seatList;
+    private final ObservableList<Station> stationList;
+    private final ObservableList<Ticket> ticketList;
 
     private ListConnection() {
         this.commuterList = FXCollections.observableArrayList();
-        this.customerOrderList = FXCollections.observableArrayList();
-        this.customerOrderDataList = FXCollections.observableArrayList();
-        this.normalOrderList = FXCollections.observableArrayList();
-        this.normalOrderDataList = FXCollections.observableArrayList();
-        this.userList = FXCollections.observableArrayList();
+        this.compartmentList = FXCollections.observableArrayList();
+        this.engineList = FXCollections.observableArrayList();
+        this.journeyList = FXCollections.observableArrayList();
+        this.officerList = FXCollections.observableArrayList();
+        this.reservationList = FXCollections.observableArrayList();
+        this.seatList = FXCollections.observableArrayList();
+        this.stationList = FXCollections.observableArrayList();
+        this.ticketList = FXCollections.observableArrayList();
 
     }
 
@@ -47,23 +53,35 @@ public class ListConnection {
         return commuterList;
     }
 
-    public ObservableList<CustomerOrder> getCustomerOrderList() {
-        return customerOrderList;
+    public ObservableList<Compartment> getCompartmentList() {
+        return compartmentList;
     }
 
-    public ObservableList<CustomerOrderData> getCustomerOrderDataList() {
-        return customerOrderDataList;
+    public ObservableList<Engine> getEngineList() {
+        return engineList;
     }
 
-    public ObservableList<NormalOrder> getNormalOrderList() {
-        return normalOrderList;
+    public ObservableList<Journey> getJourneyList() {
+        return journeyList;
     }
 
-    public ObservableList<NormalOrderData> getNormalOrderDataList() {
-        return normalOrderDataList;
+    public ObservableList<Officer> getOfficerList() {
+        return officerList;
     }
 
-    public ObservableList<User> getUserList() {
-        return userList;
+    public ObservableList<Reservation> getReservationList() {
+        return reservationList;
+    }
+
+    public ObservableList<Seat> getSeatList() {
+        return seatList;
+    }
+
+    public ObservableList<Station> getStationList() {
+        return stationList;
+    }
+
+    public ObservableList<Ticket> getTicketList() {
+        return ticketList;
     }
 }

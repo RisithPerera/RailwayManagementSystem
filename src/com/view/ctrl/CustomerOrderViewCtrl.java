@@ -5,7 +5,7 @@
  */
 package com.view.ctrl;
 
-import com.base.client.impl.CustomerOrderDataClientImpl;
+import com.base.client.impl2.CustomerOrderDataClientImpl;
 import com.base.list.ListConnection;
 import com.manifest.Data;
 import com.manifest.View;
@@ -261,7 +261,7 @@ public class CustomerOrderViewCtrl implements Initializable {
                 try {
                     CustomerOrder selectedCustomerOrder = orderTable.getSelectionModel().getSelectedItem();
                     CustomerOrderDataClientImpl.getInstance().deleteOrderData(selectedCustomerOrder);
-                    if (CustomerOrderClientImpl.getInstance().delete(selectedCustomerOrder)){
+                    if (ReservationClientImpl.getInstance().delete(selectedCustomerOrder)){
                         System.out.println("Safely Deleted....!");
                     }else{
                         System.out.println("Delete Unsucessfull...!");

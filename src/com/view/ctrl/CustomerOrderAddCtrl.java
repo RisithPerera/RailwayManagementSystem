@@ -6,7 +6,7 @@
 package com.view.ctrl;
 
 import com.base.client.impl.CommuterClientImpl;
-import com.base.client.impl.CustomerOrderClientImpl;
+import com.base.client.impl2.ReservationClientImpl;
 import com.manifest.Data;
 import com.manifest.Message;
 import com.manifest.State;
@@ -208,7 +208,7 @@ public class CustomerOrderAddCtrl implements Initializable {
             } else {
                 customerText.setText(selectedCommuter.getIdFullName());
             }
-            idText.setText(Integer.toString(CustomerOrderClientImpl.getInstance().getNextId()));
+            idText.setText(Integer.toString(ReservationClientImpl.getInstance().getNextId()));
             customerListView.getSelectionModel().select(null);
             updateOrderDataView();
         } catch (SQLException e) {
@@ -239,9 +239,9 @@ public class CustomerOrderAddCtrl implements Initializable {
         try {
             selectedCustomerOrder.setDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
             selectedCustomerOrder.setTime(new SimpleDateFormat("hh:mm:ss").format(new Date()));
-            selectedCustomerOrder.setId(CustomerOrderClientImpl.getInstance().getNextId());
+            selectedCustomerOrder.setId(ReservationClientImpl.getInstance().getNextId());
             selectedCustomerOrder.setCommuter(selectedCommuter);
-            if (CustomerOrderClientImpl.getInstance().add(selectedCustomerOrder, customerOrderDataList)) {
+            if (ReservationClientImpl.getInstance().add(selectedCustomerOrder, customerOrderDataList)) {
                 MessageBoxViewCtrl.display(Message.TITLE, String.format(Message.ADD, Data.CUSTOMER_ORDER));
             } else {
                 MessageBoxViewCtrl.display(Message.TITLE, String.format(Message.UNSUCESS, Data.CUSTOMER_ORDER));
@@ -258,7 +258,7 @@ public class CustomerOrderAddCtrl implements Initializable {
          try {
             selectedCustomerOrder.setCommuter(selectedCommuter);
             System.out.println("aaaaaa");
-            CustomerOrderClientImpl.getInstance().update(selectedCustomerOrder);
+            ReservationClientImpl.getInstance().update(selectedCustomerOrder);
             System.out.println("bbbb");
             CustomerOrderDataClientImpl.getInstance().updateOrderData(selectedCustomerOrder, customerOrderDataList);
             System.out.println("ccccccc");

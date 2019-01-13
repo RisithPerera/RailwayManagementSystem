@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 
-package com.base.client.impl;
+package com.base.client.impl2;
 
-import com.base.client.NormalOrderDataClient;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
 

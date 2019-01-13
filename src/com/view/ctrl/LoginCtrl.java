@@ -1,6 +1,6 @@
 package com.view.ctrl;
 
-import com.base.client.impl.UserClientImpl;
+import com.base.client.impl2.UserClientImpl;
 import com.main.Main;
 import com.manifest.Message;
 import com.manifest.View;

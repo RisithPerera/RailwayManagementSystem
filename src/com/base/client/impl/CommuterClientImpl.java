@@ -39,9 +39,6 @@ public class CommuterClientImpl implements CommuterClient {
         conn.setAutoCommit(false);
         try {
             PreparedStatement state = conn.prepareStatement(query);
-
-            state.setObject(1, commuter.getDate());
-            state.setObject(2, commuter.getTime());
             state.setObject(3, commuter.getId());
             state.setObject(4, commuter.getFName());
             state.setObject(5, commuter.getLName());
@@ -68,7 +65,7 @@ public class CommuterClientImpl implements CommuterClient {
     @Override
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         if (id < 0) return false;
-        String query = "Delete from customer where cusId = ?";
+        String query = "DELETE FROM Commuter WHERE commuterId = ?";
         Connection conn = BaseConnection.createConnection().getConnection();
         PreparedStatement state = conn.prepareStatement(query);
         state.setObject(1, id);
@@ -107,8 +104,6 @@ public class CommuterClientImpl implements CommuterClient {
 
         while (result.next()) {
             Commuter commuter = new Commuter();
-            commuter.setDate(result.getString("recordDate"));
-            commuter.setTime(result.getString("recordTime"));
             commuter.setId(result.getInt("commuterId"));
             commuter.setFName(result.getString("fName"));
             commuter.setLName(result.getString("lName"));

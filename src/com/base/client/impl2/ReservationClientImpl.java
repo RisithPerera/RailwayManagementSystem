@@ -5,9 +5,10 @@
  *
  */
 
-package com.base.client.impl;
+package com.base.client.impl2;
 
-import com.base.client.CustomerOrderClient;
+import com.base.client.ReservationClient;
+import com.base.client.impl.CommuterClientImpl;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
 import com.model.child.Commuter;
@@ -20,20 +21,20 @@ import javafx.collections.ObservableList;
  * @author RISITH-PC
  */
 
-public class CustomerOrderClientImpl implements CustomerOrderClient{ 
+public class ReservationClientImpl implements ReservationClient {
     
-    private static CustomerOrderClientImpl customerOrderClient;
+    private static ReservationClientImpl customerOrderClient;
     private static ObservableList<Commuter> commuterList;
     private static ObservableList<CustomerOrder> customerOrderList;
 
-    private CustomerOrderClientImpl() {
+    private ReservationClientImpl() {
         commuterList = ListConnection.getInstance().getCommuterList();
         customerOrderList = ListConnection.getInstance().getCustomerOrderList();
     }
   
-    public static CustomerOrderClientImpl getInstance() {
+    public static ReservationClientImpl getInstance() {
         if (customerOrderClient == null) {
-            customerOrderClient = new CustomerOrderClientImpl();
+            customerOrderClient = new ReservationClientImpl();
         }
         return customerOrderClient;
     }

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.base.client.impl;
+package com.base.client.impl2;
 
-import com.base.client.NormalOrderClient;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
 
