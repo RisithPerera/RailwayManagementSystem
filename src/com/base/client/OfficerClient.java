@@ -1,7 +1,9 @@
 package com.base.client;
 
+import com.model.child.Officer;
+
 import java.sql.SQLException;
 
 public interface OfficerClient {
-    public boolean checkExists(String username, String password) throws SQLException, ClassNotFoundException;
+    public Officer getOfficer(String username, String password) throws SQLException, ClassNotFoundException;
 }

@@ -7,7 +7,7 @@ import com.model.superb.SuperModel;
 import java.util.Objects;
 
 public class Commuter extends SuperModel implements Comparable<Commuter>{
-    private int    id;
+    private int id;
     private String fName;
     private String lName;
     private String street;

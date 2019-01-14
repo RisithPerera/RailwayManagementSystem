@@ -54,7 +54,7 @@ public class SeatClientImpl implements SeatClient {
         ResultSet result = state.executeQuery(query);
         if(result.next()) {
             Seat seat = new Seat();
-            seat.setCompartment(CommuterClientImpl.getInstance().search(compartmentId));
+            seat.setCompartment(CompartmentClientImpl.getInstance().search(compartmentId));
             seat.setSeatCol(seatCol);
             seat.setSeatRow(seatRow);
             seat.setComfortType(result.getInt("comfortType"));

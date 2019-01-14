@@ -108,15 +108,15 @@ public class JourneyClientImpl implements JourneyClient {
     @Override
     public void loadAll() throws SQLException, ClassNotFoundException {
         journeyList.clear();
-        String query = "SELECT * FROM Commuter";
+        String query = "SELECT * FROM Journey";
         Connection conn = BaseConnection.createConnection().getConnection();
         Statement state = conn.createStatement();
         ResultSet result = state.executeQuery(query);
 
         while (result.next()) {
             Journey journey = new Journey();
-            journey.setDate(result.getString("recordDate"));
-            journey.setTime(result.getString("recordTime"));
+            journey.setDate(result.getDate("recordDate").toString());
+            journey.setTime(result.getTime("recordTime").toString());
             journey.setId(result.getInt("journeyId"));
             journey.setEngine(EngineClientImpl.getInstance().search(result.getInt("engineId")));
             journey.setDepStation(StationClientImpl.getInstance().search(result.getInt("depStation")));

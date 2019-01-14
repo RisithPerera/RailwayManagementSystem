@@ -1,17 +1,19 @@
 package com.view.ctrl;
 
-import com.base.client.impl2.UserClientImpl;
+import com.base.client.impl.OfficerClientImpl;
 import com.main.Main;
 import com.manifest.Message;
 import com.manifest.View;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.model.child.Officer;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,12 +41,11 @@ public class LoginCtrl implements Initializable {
     private PasswordField passwordText;
     
     private Stage primaryStage;
-    private ObservableList<User> userList;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         primaryStage = Main.primaryStage;
         currentTimeText.textProperty().bind(Main.timeTask.messageProperty());
-        userList = UserClientImpl.getInstance().getAll();
 
         loginBtnEnable();
         validationNodes();
@@ -52,23 +53,21 @@ public class LoginCtrl implements Initializable {
 
     @FXML
     void loginBtnEvent(ActionEvent event) {        
-        try {            
-            for (User user : userList) {
-                if(user.getUserName().equals(usernameText.getText())){
-                    if(user.getPassword().equals(passwordText.getText())){
-                        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource(String.format(View.PATH, View.MAIN)))));
-                        MainCtrl.getInstance().updateLoginContent(user);
-                    }else{
-                        MessageBoxViewCtrl.display(Message.TITLE,"Password is incorrect!");
-                    }
-                    clearFields();
-                    return;
-                }
+        try{
+            Officer officer = OfficerClientImpl.getInstance().getOfficer(usernameText.getText(),passwordText.getText());
+            if( officer != null){
+                primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource(String.format(View.PATH, View.MAIN)))));
+                MainCtrl.getInstance().updateLoginContent(officer);
+            }else{
+                MessageBoxViewCtrl.display(Message.TITLE,"Incorrect details!");
             }
             clearFields();
-            MessageBoxViewCtrl.display(Message.TITLE,"No Such Username!");
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
     

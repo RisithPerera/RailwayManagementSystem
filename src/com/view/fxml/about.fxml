@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -12,17 +13,36 @@
    <children>
       <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="dashBoardLabel" text="About The Developer" VBox.vgrow="ALWAYS">
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="dashBoardLabel" text="CO226 Database Systems Project" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Segoe UI Semibold" size="22.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/developer.jpg" />
-               </image>
-            </ImageView>
-            <Label alignment="TOP_LEFT" text="Hello,  I'm Risith and a undergraduate computer engineering student from University of Peradeniya, Sri Lanka. As well as i've been working as a professional graphic designer with many years of experience on Adobe After Effects, Photoshop and Illustrator.  According to my opinion, Graphic designs are great method to offer visual image for communication through method of topography photos that can arrange the data and also attract the target customers.  So my hope is to implement my innovative ideas and creativity for making computer animations, videos and new modern style data representations." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="140.0" fitWidth="100.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../image/Risith.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="140.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Devin.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="140.0" fitWidth="100.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../image/Risith.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="140.0" fitWidth="100.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../image/Devin.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Label alignment="TOP_LEFT" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Segoe UI" size="14.0" />
                </font>

@@ -229,7 +229,6 @@
 .table-view .column-header {
     -fx-background-color: #3B377E;
     -fx-background-size: 20;
-
 }
 
 .table-view .column-header-background .label{
@@ -245,29 +244,30 @@
 
 .table-view .table-cell{   
     -fx-background-color: transparent;
-    -fx-text-fill: white;
+    -fx-text-fill: #1C154B;
     -fx-font-family: "Consolas";
     -fx-font-size: 14px;
 }
 
 .table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #616161;
+    -fx-background-color: -fx-table-cell-border-color, #75F7EB;
     -fx-background-insets: 0, 0 0 1 0;
+    -fx-border-color:#1C154B;
     -fx-padding: 0.0em;
 }
 
 .table-row-cell .text{
-    -fx-fill: #ffffff;
+    -fx-fill: #1C154B;
     -fx-weight: bold;
     -fx-size: 16px; 
 }
 
 .table-row-cell:hover {
-    -fx-background-color: #666692; 
+    -fx-background-color: #409EC4;
 }
 
 .table-row-cell:selected {
-    -fx-background-color: yellow; 
+    -fx-background-color: #d1ff77;
 }
 
 .table-row-cell:selected .text {

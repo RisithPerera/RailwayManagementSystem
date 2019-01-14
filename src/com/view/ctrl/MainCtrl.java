@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.model.child.Officer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,16 +88,16 @@ public class MainCtrl {
         try{
             switch((String) menuListView.getSelectionModel().getSelectedItem()){
                 case "Journey" :
-                    showContent(String.format(View.PATH, View.DASHBOARD));
+                    //showContent(String.format(View.PATH, View.JOURNEY_VIEW));
                     break;
                 case "Train" :
-                    showContent(String.format(View.PATH, View.NORMAL_ORDER_VIEW));
+                    //showContent(String.format(View.PATH, View.TRAIN_VIEW));
                     break;
-                case "Clients" :
-                    showContent(String.format(View.PATH, View.CUSTOMER_ORDER_VIEW));
+                case "Commuters" :
+                    showContent(String.format(View.PATH, View.COMMUTER_VIEW));
                     break;
                 case "Booking" :
-                    showContent(String.format(View.PATH, View.ANALYSIS));
+                    //showContent(String.format(View.PATH, View.RESERVATION_VIEW));
                     break;
                 case "About":
                     showAbout(String.format(View.PATH, View.ABOUT));
@@ -139,14 +140,9 @@ public class MainCtrl {
         stage.show();
     }
     
-    public void updateLoginContent(User user){
-        switch(user.getType()){
-            case 0: userTypeText.setText("Login As : ADMINISTRATOR"); break;
-            case 1: userTypeText.setText("Login As : CLERK");         break;
-            case 2: userTypeText.setText("Login As : AUDIT");
-        }
-        
-        userNameText.setText("Current User : " + user.getUserName());
+    public void updateLoginContent(Officer officer){
+        userTypeText.setText("Login As : OFFICER");
+        userNameText.setText("Current User : " + officer.getName());
         loginDateText.setText("Date Logged In : " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()));   
         loginTimeText.setText("Time Logged In : " + new SimpleDateFormat("hh:mm:ss a").format(new Date()));       
     }

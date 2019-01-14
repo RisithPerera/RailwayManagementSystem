@@ -41,7 +41,7 @@
             </HBox>
             <HBox nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
                <children>
-                  <ListView id="my" fx:id="menuListView" maxWidth="110.0" minWidth="110.0" onMouseClicked="#menuListViewEvent" prefWidth="110.0" />
+                  <ListView id="my" fx:id="menuListView" maxWidth="130.0" minWidth="130.0" onMouseClicked="#menuListViewEvent" prefWidth="130.0" />
                 <AnchorPane fx:id="contentPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #75F7EB;" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>

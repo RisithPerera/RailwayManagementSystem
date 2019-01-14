@@ -6,8 +6,9 @@
 package com.main;
 
 import com.base.client.impl.CommuterClientImpl;
-import com.base.client.impl2.NormalOrderClientImpl;
-import com.base.client.impl2.UserClientImpl;
+import com.base.client.impl.EngineClientImpl;
+import com.base.client.impl.JourneyClientImpl;
+import com.base.client.impl.StationClientImpl;
 import com.manifest.View;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -69,9 +70,9 @@ public class Main extends Application {
     public static void initializeDatabase(){
         try {
             CommuterClientImpl.getInstance().loadAll();
-            ReservationClientImpl.getInstance().loadAll();
-            NormalOrderClientImpl.getInstance().loadAll();
-            UserClientImpl.getInstance().loadAll();
+            EngineClientImpl.getInstance().loadAll();
+            JourneyClientImpl.getInstance().loadAll();
+            StationClientImpl.getInstance().loadAll();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
