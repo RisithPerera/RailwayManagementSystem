@@ -175,4 +175,5 @@ public class Journey extends SuperModel implements Comparable<Journey> {
         int hash = Objects.hashCode(String.format("%05d", this.getId()));
         return hash;
     }
+
 }

@@ -6,6 +6,7 @@
 package com.base.client;
 
 import com.model.child.Commuter;
+import com.model.child.Compartment;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;

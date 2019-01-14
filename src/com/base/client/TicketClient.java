@@ -7,5 +7,5 @@ import javafx.collections.ObservableList;
 import java.sql.SQLException;
 
 public interface TicketClient {
-    public ObservableList<Ticket> search(Reservation reservation) throws SQLException, ClassNotFoundException;
+    public ObservableList<Ticket> getReservationTickets(Reservation reservation) throws SQLException, ClassNotFoundException;
 }

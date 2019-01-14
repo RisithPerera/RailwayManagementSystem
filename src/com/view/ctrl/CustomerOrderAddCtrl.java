@@ -6,7 +6,6 @@
 package com.view.ctrl;
 
 import com.base.client.impl.CommuterClientImpl;
-import com.base.client.impl2.ReservationClientImpl;
 import com.manifest.Data;
 import com.manifest.Message;
 import com.manifest.State;

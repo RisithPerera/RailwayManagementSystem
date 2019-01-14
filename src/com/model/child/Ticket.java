@@ -9,9 +9,7 @@ public class Ticket extends SuperModel implements Comparable<Ticket> {
     private int id;
     private Reservation reservation;
     private Journey journey;
-    private char seatCol;
-    private int seatRow;
-    private Compartment compartment;
+    private Seat seat;
     private double price;
     private int type;
 
@@ -21,13 +19,11 @@ public class Ticket extends SuperModel implements Comparable<Ticket> {
         this.id = id;
     }
 
-    public Ticket(int id, Reservation reservation, Journey journey, char seatCol, int seatRow, Compartment compartment, double price, int type) {
+    public Ticket(int id, Reservation reservation, Journey journey, Seat seat, double price, int type) {
         this.id = id;
         this.reservation = reservation;
         this.journey = journey;
-        this.seatCol = seatCol;
-        this.seatRow = seatRow;
-        this.compartment = compartment;
+        this.seat = seat;
         this.price = price;
         this.type = type;
     }
@@ -56,28 +52,12 @@ public class Ticket extends SuperModel implements Comparable<Ticket> {
         this.journey = journey;
     }
 
-    public char getSeatCol() {
-        return seatCol;
+    public Seat getSeat() {
+        return seat;
     }
 
-    public void setSeatCol(char seatCol) {
-        this.seatCol = seatCol;
-    }
-
-    public int getSeatRow() {
-        return seatRow;
-    }
-
-    public void setSeatRow(int seatRow) {
-        this.seatRow = seatRow;
-    }
-
-    public Compartment getCompartment() {
-        return compartment;
-    }
-
-    public void setCompartment(Compartment compartment) {
-        this.compartment = compartment;
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 
     public double getPrice() {
@@ -103,10 +83,10 @@ public class Ticket extends SuperModel implements Comparable<Ticket> {
         return  getId()          + Symbol.SPLIT +
                 getReservation() + Symbol.SPLIT +
                 getJourney()     + Symbol.SPLIT +
-                getSeatCol()     + Symbol.SPLIT +
-                getSeatRow()     + Symbol.SPLIT +
-                getCompartment() + Symbol.SPLIT +
-                getPrice()       + Symbol.SPLIT +
+                getSeat().getCompartment().getId() + Symbol.SPLIT +
+                getSeat().getSeatCol()     + Symbol.SPLIT +
+                getSeat().getSeatRow()     + Symbol.SPLIT +
+                getPrice()                 + Symbol.SPLIT +
                 getType();
     }
 

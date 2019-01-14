@@ -7,15 +7,15 @@ import java.util.Objects;
 
 public class Seat extends SuperModel {
 
-    private char seatCol;
-    private int seatRow;
     private Compartment compartment;
+    private String seatCol;
+    private int seatRow;
     private int comfortType;
     private boolean isAvailbale;
 
     public Seat() {}
 
-    public Seat(char seatCol, int seatRow, Compartment compartment, int comfortType, boolean isAvailbale) {
+    public Seat(Compartment compartment, String seatCol, int seatRow, int comfortType, boolean isAvailbale) {
         this.seatCol = seatCol;
         this.seatRow = seatRow;
         this.compartment = compartment;
@@ -23,11 +23,11 @@ public class Seat extends SuperModel {
         this.isAvailbale = isAvailbale;
     }
 
-    public char getSeatCol() {
+    public String getSeatCol() {
         return seatCol;
     }
 
-    public void setSeatCol(char seatCol) {
+    public void setSeatCol(String seatCol) {
         this.seatCol = seatCol;
     }
 

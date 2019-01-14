@@ -12,6 +12,7 @@ public interface JourneyClient {
     public Journey search(int t);
     public boolean delete(int t) throws SQLException, ClassNotFoundException;
     public ObservableList<Journey> getCompletedJourneys() throws SQLException, ClassNotFoundException;
+    public ObservableList<Journey> getAll();
     public void loadAll() throws SQLException, ClassNotFoundException;
     public int getNextId() throws SQLException, ClassNotFoundException;
 }

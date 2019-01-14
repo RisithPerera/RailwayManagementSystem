@@ -13,6 +13,7 @@ import com.model.child.Commuter;
 
 import java.sql.*;
 
+import com.model.child.Compartment;
 import javafx.collections.ObservableList;
 
 public class CommuterClientImpl implements CommuterClient {
@@ -34,20 +35,20 @@ public class CommuterClientImpl implements CommuterClient {
     @Override
     public boolean add(Commuter commuter) throws SQLException, ClassNotFoundException {
         if (commuter == null) return false;
-        String query = "INSERT INTO Commuter VALUE (?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Commuter VALUE (?,?,?,?,?,?,?,?,?)";
         Connection conn = BaseConnection.createConnection().getConnection();
         conn.setAutoCommit(false);
         try {
             PreparedStatement state = conn.prepareStatement(query);
-            state.setObject(3, commuter.getId());
-            state.setObject(4, commuter.getFName());
-            state.setObject(5, commuter.getLName());
-            state.setObject(6, commuter.getStreet());
-            state.setObject(7, commuter.getCity());
-            state.setObject(8, commuter.getDistrict());
-            state.setObject(9, commuter.getPassword());
-            state.setObject(10, commuter.getContact());
-            state.setObject(11, commuter.getReputation());
+            state.setObject(1, commuter.getId());
+            state.setObject(2, commuter.getFName());
+            state.setObject(3, commuter.getLName());
+            state.setObject(4, commuter.getStreet());
+            state.setObject(5, commuter.getCity());
+            state.setObject(6, commuter.getDistrict());
+            state.setObject(7, commuter.getPassword());
+            state.setObject(8, commuter.getContact());
+            state.setObject(9, commuter.getReputation());
 
             if(state.executeUpdate()>0){
                 commuterList.add(commuter);

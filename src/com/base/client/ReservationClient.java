@@ -18,6 +18,5 @@ import java.sql.SQLException;
  */
 
 public interface ReservationClient{
-    public ObservableList<Reservation> getCommuterReservation(Commuter commuter);
-    public void loadAll() throws SQLException, ClassNotFoundException;
+    public ObservableList<Reservation> getCommuterReservation(Commuter commuter) throws SQLException, ClassNotFoundException;
 }
