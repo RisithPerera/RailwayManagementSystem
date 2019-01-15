@@ -117,7 +117,36 @@
     -fx-text-fill: rgb(130,130,130);
 }
 
+/* ------------------------- Compartment --------------------------------- */
 
+.compartment {
+    -fx-background-radius: 25;
+    -fx-padding: 5 0 5 20;
+    -fx-border-radius: 25;
+    -fx-border-width: 3;
+    -fx-border-color : #000000;
+    -fx-background-color: #1C154B;
+}
+
+
+/* ------------------------- Compartment Seat --------------------------------- */
+
+.compartmentSeat {
+    -fx-background-radius: 75;
+    -fx-border-radius: 75;
+    -fx-border-width: 3;
+    -fx-border-color : #000000;
+    -fx-background-color: #3B377E;
+
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;
+}
+
+.compartmentSeat:hover{
+    -fx-background-color: #cbff9b;
+}
 
 /* ------------------------- blackCircle --------------------------------- */
 
@@ -158,21 +187,26 @@
 /* ------------------------- button --------------------------------- */
 
 .button {
-    -fx-background-color: #1f185f;
+    -fx-background-color: #3B377E;
     -fx-background-radius: 0, 0;
-    
-    -fx-border-color: #1C154B;
+    -fx-background-size: 20px,20px;
+    -fx-border-color: #3B377E;
     -fx-border-width : 2;
     -fx-border-radius: 0;
     
-    -fx-text-fill: #c3c3cf;
+    -fx-text-fill: #75F7EB;
     -fx-font-weight: bold;
     -fx-font-family: "Segoe UI";
     -fx-font-size: 12px;
 }
 
 .button:hover {
-    -fx-background-color: #666692;
+    -fx-background-color: #409EC4;
+}
+
+.button:pressed {
+    -fx-background-color: #1C154B;
+    -fx-border-color: #1C154B;
 }
 
 
@@ -185,7 +219,7 @@
     -fx-border-width: 2px;
     -fx-border-radius: 0;
 
-    -fx-text-fill: #323232;
+    -fx-text-fill: #1C154B;
     -fx-font-weight: bold;
     -fx-font-family: "Segoe UI";
     -fx-font-size: 12px;
@@ -194,8 +228,8 @@
 }
 
 .text-input:hover{
-    -fx-background-color: #FFFFFF;
-    -fx-prompt-text-fill: #313038;
+    -fx-background-color: #cbff9b;
+    -fx-prompt-text-fill: #1C154B;
 }
 
 /*---------------------------------- Label ---------------------------------- */
@@ -267,7 +301,7 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #d1ff77;
+    -fx-background-color: #cbff9b;
 }
 
 .table-row-cell:selected .text {
@@ -309,6 +343,7 @@
     -fx-background-color: #666692;
 }
 
+/*------------------- Choise Box ------------------------------*/
 .choice-box {
     -fx-background-color: #29282d;
     -fx-background-radius: 0, 0;
@@ -320,7 +355,7 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-family: "Segoe UI";
-    -fx-font-size: 16px;   
+    -fx-font-size: 12px;
 }
 
 .choice-box .text-field{
@@ -330,22 +365,22 @@
 /*------------------- Combo Box ------------------------------*/
 
 .combo-box {
-    -fx-background-color: #29282d;
+    -fx-background-color: #1C154B;
     -fx-background-radius: 0, 0;
 
     -fx-border-color: #1C154B;
     -fx-border-width : 2;
     -fx-border-radius: 0;
 
-    -fx-text-fill: #52525e;
+    -fx-text-fill: #75F7EB;
     -fx-font-weight: bold;
     -fx-font-family: "Segoe UI";
-    -fx-font-size: 16px;   
+    -fx-font-size: 12px;
 }
 
 .combo-box .text{
     -fx-border-width: 0px;
-    -fx-fill: #c3c3cf;
+    -fx-fill: #75F7EB;
 }
 
 .combo-box .arrow-button{

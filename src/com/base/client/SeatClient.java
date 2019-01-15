@@ -10,6 +10,6 @@ import java.sql.SQLException;
 
 public interface SeatClient {
     public boolean add(ObservableList<Seat> seats) throws SQLException, ClassNotFoundException;
-    public Seat search(int compartmentId, String seatCol, int seatRow) throws SQLException, ClassNotFoundException;
+    public Seat search(int compartmentId, int seatCol, int seatRow) throws SQLException, ClassNotFoundException;
     public ObservableList<Seat> getCompartmentSeats(Compartment compartment) throws SQLException, ClassNotFoundException;
 }

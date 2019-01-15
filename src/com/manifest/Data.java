@@ -22,6 +22,9 @@ public interface Data {
     public static final String STATTON = "Station";
     public static final String TICKET = "Ticket";
 
+    public static final int COMPARTMENT_SEAT_ROW_COUNT = 16;
+    public static final int COMPARTMENT_SEAT_COL_COUNT = 4;
+
     public static final String MENU_LIST[] = {"Journey","Train","Commuters","Booking","About"};
 
     public static final String DISTRICTS[] = {"Kalutara","Colombo","Ampara","Anuradhapura","Badulla","Batticaloa","Galle","Gampaha","Hambantota","Jaffna","Kandy","Kegalle","Kurunegala","Mannar","Matale","Matara","Moneragala","Mullaitivu","Nuwara Eliya","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya"};

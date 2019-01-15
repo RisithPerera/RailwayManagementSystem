@@ -43,9 +43,8 @@ public class TicketClientImpl implements TicketClient {
             Ticket ticket = new Ticket();
             ticket.setId(result.getInt("ticketId"));
             ticket.setReservation(reservation);
-            ticket.setJourney(JourneyClientImpl.getInstance().search(result.getInt("journeyId")));
             int compartmentId = result.getInt("compartmentId");
-            String seatCol = result.getString("seatCol");
+            int seatCol = result.getInt("seatCol");
             int seatRow = result.getInt("seatRow");
             ticket.setSeat(SeatClientImpl.getInstance().search(compartmentId,seatCol,seatRow));
             ticket.setPrice(result.getDouble("price"));

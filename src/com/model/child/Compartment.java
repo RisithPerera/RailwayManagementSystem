@@ -10,8 +10,6 @@ public class Compartment extends SuperModel implements Comparable<Compartment> {
     private int id;
     private Engine engine;
     private int classType;
-    private int numCol;
-    private int numRow;
     private boolean isAvailable;
 
     public Compartment() {}
@@ -20,12 +18,10 @@ public class Compartment extends SuperModel implements Comparable<Compartment> {
         this.id = id;
     }
 
-    public Compartment(int id, Engine engine, int classType, int numCol, int numRow, boolean isAvailable) {
+    public Compartment(int id, Engine engine, int classType,boolean isAvailable) {
         this.id = id;
         this.engine = engine;
         this.classType = classType;
-        this.numCol = numCol;
-        this.numRow = numRow;
         this.isAvailable = isAvailable;
     }
 
@@ -53,22 +49,6 @@ public class Compartment extends SuperModel implements Comparable<Compartment> {
         this.classType = classType;
     }
 
-    public int getNumCol() {
-        return numCol;
-    }
-
-    public void setNumCol(int numCol) {
-        this.numCol = numCol;
-    }
-
-    public int getNumRow() {
-        return numRow;
-    }
-
-    public void setNumRow(int numRow) {
-        this.numRow = numRow;
-    }
-
     public boolean isAvailable() {
         return isAvailable;
     }
@@ -81,11 +61,9 @@ public class Compartment extends SuperModel implements Comparable<Compartment> {
 
     @Override
     public String toString() {
-        return  getId()     + Symbol.SPLIT +
-                getEngine()     + Symbol.SPLIT +
-                getClassType()       + Symbol.SPLIT +
-                getNumCol()       + Symbol.SPLIT +
-                getNumRow()       + Symbol.SPLIT +
+        return  getId()        + Symbol.SPLIT +
+                getEngine()    + Symbol.SPLIT +
+                getClassType() + Symbol.SPLIT +
                 isAvailable();
     }
 

@@ -7,6 +7,7 @@ package com.base.client;
 
 
 import com.model.child.Commuter;
+import com.model.child.Journey;
 import com.model.child.Reservation;
 import javafx.collections.ObservableList;
 import java.sql.SQLException;
@@ -18,5 +19,8 @@ import java.sql.SQLException;
  */
 
 public interface ReservationClient{
+    public ObservableList<Reservation> getJourneyReservation(Journey journey) throws SQLException, ClassNotFoundException;
     public ObservableList<Reservation> getCommuterReservation(Commuter commuter) throws SQLException, ClassNotFoundException;
+    public ObservableList<Reservation> getAll();
+    public void loadAll() throws SQLException, ClassNotFoundException;
 }

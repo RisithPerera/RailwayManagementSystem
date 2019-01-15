@@ -8,14 +8,14 @@ import java.util.Objects;
 public class Seat extends SuperModel {
 
     private Compartment compartment;
-    private String seatCol;
+    private int seatCol;
     private int seatRow;
     private int comfortType;
     private boolean isAvailbale;
 
     public Seat() {}
 
-    public Seat(Compartment compartment, String seatCol, int seatRow, int comfortType, boolean isAvailbale) {
+    public Seat(Compartment compartment, int seatCol, int seatRow, int comfortType, boolean isAvailbale) {
         this.seatCol = seatCol;
         this.seatRow = seatRow;
         this.compartment = compartment;
@@ -23,11 +23,11 @@ public class Seat extends SuperModel {
         this.isAvailbale = isAvailbale;
     }
 
-    public String getSeatCol() {
+    public int getSeatCol() {
         return seatCol;
     }
 
-    public void setSeatCol(String seatCol) {
+    public void setSeatCol(int seatCol) {
         this.seatCol = seatCol;
     }
 
@@ -66,7 +66,7 @@ public class Seat extends SuperModel {
     //---------------------------- Custom Methods   -----------------------------//
 
     public String getId(){
-        return this.compartment.getId()+":"+this.getSeatCol()+this.getSeatRow();
+        return this.compartment.getId()+":"+(char)(this.getSeatCol()+64)+"-"+this.getSeatRow();
     }
     //---------------------------- Override Methods -----------------------------//
 

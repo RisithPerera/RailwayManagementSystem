@@ -46,9 +46,9 @@ public class SeatClientImpl implements SeatClient {
     }
 
     @Override
-    public Seat search(int compartmentId, String seatCol, int seatRow) throws SQLException, ClassNotFoundException {
+    public Seat search(int compartmentId, int seatCol, int seatRow) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM Seat WHERE compartmentId = "+compartmentId+" AND seatCol = "+seatCol+" AND seatRow = "+seatRow;
+        String query = "SELECT * FROM Seat WHERE compartmentId = "+compartmentId+" AND seatCol = '"+seatCol+"' AND seatRow = "+seatRow;
         Connection conn = BaseConnection.createConnection().getConnection();
         Statement state = conn.createStatement();
         ResultSet result = state.executeQuery(query);
@@ -77,7 +77,7 @@ public class SeatClientImpl implements SeatClient {
         while (result.next()) {
             Seat seat = new Seat();
             seat.setCompartment(compartment);
-            seat.setSeatCol(result.getString("seatCol"));
+            seat.setSeatCol(result.getInt("seatCol"));
             seat.setSeatRow(result.getInt("seatRow"));
             seat.setComfortType(result.getInt("comfortType"));
             seat.setAvailbale(result.getBoolean("isAvailable"));

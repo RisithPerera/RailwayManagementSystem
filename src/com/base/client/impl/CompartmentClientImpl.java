@@ -3,7 +3,6 @@ package com.base.client.impl;
 import com.base.client.CompartmentClient;
 import com.base.connection.BaseConnection;
 import com.base.list.ListConnection;
-import com.model.child.Commuter;
 import com.model.child.Compartment;
 import com.model.child.Engine;
 import com.model.child.Seat;
@@ -42,8 +41,6 @@ public class CompartmentClientImpl implements CompartmentClient {
             state.setObject(1, compartment.getId());
             state.setObject(2, compartment.getEngine().getId());
             state.setObject(3, compartment.getClassType());
-            state.setObject(4, compartment.getNumCol());
-            state.setObject(5, compartment.getNumRow());
             state.setObject(6, compartment.isAvailable());
 
             if (state.executeUpdate() > 0) {
@@ -75,8 +72,6 @@ public class CompartmentClientImpl implements CompartmentClient {
             compartment.setId(result.getInt("compartmentId"));
             compartment.setEngine(EngineClientImpl.getInstance().search(result.getInt("engineId")));
             compartment.setClassType(result.getInt("class"));
-            compartment.setNumCol(result.getInt("numCol"));
-            compartment.setNumRow(result.getInt("numRow"));
             compartment.setAvailable(result.getBoolean("isAvailable"));
 
             return compartment;
@@ -105,8 +100,6 @@ public class CompartmentClientImpl implements CompartmentClient {
             compartment.setId(result.getInt("compartmentId"));
             compartment.setEngine(engine);
             compartment.setClassType(result.getInt("class"));
-            compartment.setNumCol(result.getInt("numCol"));
-            compartment.setNumRow(result.getInt("numRow"));
             compartment.setAvailable(result.getBoolean("isAvailable"));
             compartmentList.add(compartment);
 

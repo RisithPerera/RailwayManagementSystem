@@ -8,7 +8,6 @@ import java.util.Objects;
 public class Ticket extends SuperModel implements Comparable<Ticket> {
     private int id;
     private Reservation reservation;
-    private Journey journey;
     private Seat seat;
     private double price;
     private int type;
@@ -19,10 +18,10 @@ public class Ticket extends SuperModel implements Comparable<Ticket> {
         this.id = id;
     }
 
-    public Ticket(int id, Reservation reservation, Journey journey, Seat seat, double price, int type) {
+    public Ticket(int id, Reservation reservation, Seat seat, double price, int type) {
         this.id = id;
         this.reservation = reservation;
-        this.journey = journey;
+
         this.seat = seat;
         this.price = price;
         this.type = type;
@@ -42,14 +41,6 @@ public class Ticket extends SuperModel implements Comparable<Ticket> {
 
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
-    }
-
-    public Journey getJourney() {
-        return journey;
-    }
-
-    public void setJourney(Journey journey) {
-        this.journey = journey;
     }
 
     public Seat getSeat() {
@@ -81,8 +72,7 @@ public class Ticket extends SuperModel implements Comparable<Ticket> {
     @Override
     public String toString() {
         return  getId()          + Symbol.SPLIT +
-                getReservation() + Symbol.SPLIT +
-                getJourney()     + Symbol.SPLIT +
+                getReservation().getCommuter().getFullName() + Symbol.SPLIT +
                 getSeat().getCompartment().getId() + Symbol.SPLIT +
                 getSeat().getSeatCol()     + Symbol.SPLIT +
                 getSeat().getSeatRow()     + Symbol.SPLIT +

@@ -5,10 +5,7 @@
  */
 package com.main;
 
-import com.base.client.impl.CommuterClientImpl;
-import com.base.client.impl.EngineClientImpl;
-import com.base.client.impl.JourneyClientImpl;
-import com.base.client.impl.StationClientImpl;
+import com.base.client.impl.*;
 import com.manifest.View;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -54,7 +51,7 @@ public class Main extends Application {
         //--------------------------- Start Stage ----------------------------//
         try {
             primaryStage = stage;
-            primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource(String.format(View.PATH, View.LOGIN)))));
+            primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource(String.format(View.PATH, View.MAIN)))));
             stage.getIcons().add(new Image(View.IMAGE_ICON));
             primaryStage.show();
         } catch (IOException ex) {
@@ -70,9 +67,10 @@ public class Main extends Application {
     public static void initializeDatabase(){
         try {
             CommuterClientImpl.getInstance().loadAll();
+            StationClientImpl.getInstance().loadAll();
             EngineClientImpl.getInstance().loadAll();
             JourneyClientImpl.getInstance().loadAll();
-            StationClientImpl.getInstance().loadAll();
+            ReservationClientImpl.getInstance().loadAll();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

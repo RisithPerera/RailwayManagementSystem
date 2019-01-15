@@ -97,7 +97,7 @@ public class MainCtrl {
                     showContent(String.format(View.PATH, View.COMMUTER_VIEW));
                     break;
                 case "Booking" :
-                    //showContent(String.format(View.PATH, View.RESERVATION_VIEW));
+                    showContent(String.format(View.PATH, View.RESERVATION_VIEW));
                     break;
                 case "About":
                     showAbout(String.format(View.PATH, View.ABOUT));

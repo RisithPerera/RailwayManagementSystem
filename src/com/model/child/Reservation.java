@@ -11,6 +11,7 @@ public class Reservation extends SuperModel implements Comparable<Commuter> {
     private String time;
     private int    id;
     private Commuter commuter;
+    private Journey journey;
 
     public Reservation() {}
 
@@ -18,11 +19,12 @@ public class Reservation extends SuperModel implements Comparable<Commuter> {
         this.id = id;
     }
 
-    public Reservation(String date, String time, int id, Commuter commuter) {
+    public Reservation(String date, String time, int id, Commuter commuter, Journey journey) {
         this.date = date;
         this.time = time;
         this.id = id;
         this.commuter = commuter;
+        this.journey = journey;
     }
 
     public String getDate() {
@@ -53,8 +55,22 @@ public class Reservation extends SuperModel implements Comparable<Commuter> {
         return commuter;
     }
 
+    public Journey getJourney() {
+        return journey;
+    }
+
+    public void setJourney(Journey journey) {
+        this.journey = journey;
+    }
+
     public void setCommuter(Commuter commuter) {
         this.commuter = commuter;
+    }
+
+    //---------------------------- Calculatons -------------------------------------//
+
+    public String getFullName() {
+        return this.commuter.getFullName();
     }
 
     //---------------------------- Override Methods -----------------------------//
