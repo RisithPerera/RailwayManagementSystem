@@ -149,11 +149,11 @@ public class Journey extends SuperModel implements Comparable<Journey> {
     }
 
     public String getDepDetails() {
-        return this.depStation.getName() +",\n"+ this.depPlatform+",\n"+ this.getDepTime()+" : "+ this.depTime;
+        return this.depStation.getName() +"\nPlatform: "+ this.depPlatform+"\n"+ this.depDate+" : "+ this.depTime;
     }
 
     public String getArrDetails() {
-        return this.arrStation.getName() +",\n"+ this.arrPlatform+",\n"+ this.arrDate+" : "+ this.arrTime;
+        return this.arrStation.getName() +"\nPlatform: "+ this.arrPlatform+"\n"+ this.arrDate+" : "+ this.arrTime;
     }
 
     //---------------------------- Override Methods -----------------------------//

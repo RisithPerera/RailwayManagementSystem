@@ -51,7 +51,7 @@ public class Main extends Application {
         //--------------------------- Start Stage ----------------------------//
         try {
             primaryStage = stage;
-            primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource(String.format(View.PATH, View.MAIN)))));
+            primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource(String.format(View.PATH, View.LOGIN)))));
             stage.getIcons().add(new Image(View.IMAGE_ICON));
             primaryStage.show();
         } catch (IOException ex) {

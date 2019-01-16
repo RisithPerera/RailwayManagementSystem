@@ -41,7 +41,7 @@ public class Station extends SuperModel implements Comparable<Station> {
 
     @Override
     public String toString() {
-        return getId() + Symbol.SPLIT + getName();
+        return getName();
     }
 
     @Override

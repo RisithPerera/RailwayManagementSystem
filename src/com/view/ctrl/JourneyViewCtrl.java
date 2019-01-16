@@ -9,6 +9,7 @@ import com.base.client.impl.CommuterClientImpl;
 import com.base.client.impl.JourneyClientImpl;
 import com.manifest.Data;
 import com.manifest.Message;
+import com.manifest.View;
 import com.model.child.Commuter;
 import com.model.child.Journey;
 import javafx.beans.binding.Bindings;
@@ -22,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -74,7 +76,9 @@ public class JourneyViewCtrl implements Initializable {
 
     @FXML
     void addNewJourneyEvent(ActionEvent event) {
-        System.out.println("NEw Journey");
+
+        MainCtrl.getInstance().showContent(String.format(View.PATH, View.JOURNEY_ADD));
+
     }
 
 

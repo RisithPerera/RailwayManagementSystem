@@ -126,7 +126,7 @@ public class JourneyClientImpl implements JourneyClient {
             journey.setArrStation(StationClientImpl.getInstance().search(result.getInt("arrStation")));
             journey.setArrPlatform(result.getInt("arrPlatform"));
             journey.setArrDate(result.getString("arrDate"));
-            journey.setTime(result.getString("arrTime"));
+            journey.setArrTime(result.getString("arrTime"));
 
             journeyList.add(journey);
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #75F7EB;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.ctrl.EngineAddCtrl">
+   <children>
+      <HBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Label maxHeight="1.7976931348623157E308" text="Engine Name : " textFill="#3b377e" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="engineNameText" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="204.0" promptText="Type Here" />
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <Label alignment="CENTER" layoutX="403.0" layoutY="200.0" prefHeight="25.0" style="-fx-background-color: #3B377E;" text="Add New Engine" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <HBox alignment="BOTTOM_RIGHT" layoutX="10.0" layoutY="10.0" spacing="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Button defaultButton="true" layoutX="355.0" layoutY="376.0" mnemonicParsing="false" onAction="#addnewEngineBtnEvent" prefHeight="27.0" prefWidth="88.0" styleClass="btn" text="Save" />
+            <Button defaultButton="true" layoutX="454.0" layoutY="376.0" mnemonicParsing="false" onAction="#cancelEngineBtnEvent" prefHeight="27.0" prefWidth="88.0" styleClass="btn" text="Cancel" />
+         </children>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

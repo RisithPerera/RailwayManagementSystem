@@ -2,6 +2,7 @@ package com.view.ctrl;
 
 import com.base.client.impl.CompartmentClientImpl;
 import com.base.client.impl.EngineClientImpl;
+import com.manifest.View;
 import com.model.child.Commuter;
 import com.model.child.Compartment;
 import com.model.child.Engine;
@@ -50,7 +51,7 @@ public class TrainViewCtrl implements Initializable {
 
     @FXML
     void addNewTrainEvent(ActionEvent event) {
-        System.out.println("Scene");
+        MainCtrl.getInstance().showContent(String.format(View.PATH, View.TRAIN_ADD));
     }
 
     @FXML
@@ -67,6 +68,7 @@ public class TrainViewCtrl implements Initializable {
                 emptyEngines.add(engine);
             }
         }
+        createTrains(emptyEngines);
     }
 
     @FXML

@@ -128,6 +128,20 @@
     -fx-background-color: #1C154B;
 }
 
+/* ------------------------- trainbox Label --------------------------------- */
+
+.trainBox {
+    -fx-background-color: #409EC4;
+}
+
+.trainBox:hover{
+    -fx-background-color: #cbff9b;
+}
+
+.trainBox:pressed{
+    -fx-background-color: #1C154B;
+}
+
 /* ------------------------- engineName Label --------------------------------- */
 
 .engineName {

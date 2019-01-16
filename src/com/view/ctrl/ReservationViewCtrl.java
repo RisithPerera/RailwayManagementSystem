@@ -186,16 +186,16 @@ public class ReservationViewCtrl implements Initializable {
         reservationTable.getItems().setAll(reservationList);
         reservationTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null && newSelection != oldSelection) {
-                nameLabel.setText(newSelection.getCommuter().getFullName());
-                addressLabel.setText(newSelection.getCommuter().getAddress());
-                ticketLabel.setText("2 Full 1 Half");
-                trainLabel.setText(newSelection.getJourney().getEngine().getName());
-                departureLabel.setText(newSelection.getJourney().getDepStation().getName());
-                depPlatformLabel.setText(Integer.toString(newSelection.getJourney().getDepPlatform()));
-                depTimeLabel.setText(newSelection.getJourney().getDepDate()+":"+newSelection.getJourney().getDepTime());
-                arrivalLabel.setText(newSelection.getJourney().getArrStation().getName());
-                arrPlatformLabel.setText(Integer.toString(newSelection.getJourney().getArrPlatform()));
-                arrTimeLabel.setText(newSelection.getJourney().getDepDate()+":"+newSelection.getJourney().getDepTime());
+                nameLabel.setText(": "+newSelection.getCommuter().getFullName());
+                addressLabel.setText(": "+newSelection.getCommuter().getAddress());
+                ticketLabel.setText(": 2 Full 1 Half");
+                trainLabel.setText(": "+newSelection.getJourney().getEngine().getName());
+                departureLabel.setText(": "+newSelection.getJourney().getDepStation().getName());
+                depPlatformLabel.setText(": "+Integer.toString(newSelection.getJourney().getDepPlatform()));
+                depTimeLabel.setText(": "+newSelection.getJourney().getDepDate()+":"+newSelection.getJourney().getDepTime());
+                arrivalLabel.setText(": "+newSelection.getJourney().getArrStation().getName());
+                arrPlatformLabel.setText(": "+Integer.toString(newSelection.getJourney().getArrPlatform()));
+                arrTimeLabel.setText(": "+newSelection.getJourney().getDepDate()+":"+newSelection.getJourney().getDepTime());
 
                 try {
                     ObservableList<Ticket> reservationTickets = TicketClientImpl.getInstance().getReservationTickets(newSelection);

@@ -80,30 +80,27 @@ public class MainCtrl {
                 }
             }
         });
+        showContent(String.format(View.PATH, View.JOURNEY_VIEW));
     }
 
     //---------------------- Nodes Events ------------------------------------//
     @FXML
     public void menuListViewEvent(MouseEvent event) {
-        try{
-            switch((String) menuListView.getSelectionModel().getSelectedItem()){
-                case "Journey" :
-                    showContent(String.format(View.PATH, View.JOURNEY_VIEW));
-                    break;
-                case "Train" :
-                    showContent(String.format(View.PATH,View.TRAIN_VIEW));
-                    break;
-                case "Commuters" :
-                    showContent(String.format(View.PATH, View.COMMUTER_VIEW));
-                    break;
-                case "Booking" :
-                    showContent(String.format(View.PATH, View.RESERVATION_VIEW));
-                    break;
-                case "About":
-                    showAbout(String.format(View.PATH, View.ABOUT));
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(MainCtrl.class.getName()).log(Level.SEVERE, null, ex);
+        switch((String) menuListView.getSelectionModel().getSelectedItem()){
+            case "Journey" :
+                showContent(String.format(View.PATH, View.JOURNEY_VIEW));
+                break;
+            case "Train" :
+                showContent(String.format(View.PATH,View.TRAIN_VIEW));
+                break;
+            case "Commuters" :
+                showContent(String.format(View.PATH, View.COMMUTER_VIEW));
+                break;
+            case "Booking" :
+                showContent(String.format(View.PATH, View.RESERVATION_VIEW));
+                break;
+            case "About":
+                //showAbout(String.format(View.PATH, View.ABOUT));
         }
     }
 
@@ -117,15 +114,21 @@ public class MainCtrl {
     }
 
     //------------------------- Addtional Methods ----------------------------//
-    public Object showContent(String path) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Pane pane = fxmlLoader.load(getClass().getResource(path).openStream());
-        AnchorPane.setBottomAnchor(pane, 0.0);
-        AnchorPane.setLeftAnchor(pane, 0.0);
-        AnchorPane.setRightAnchor(pane, 0.0);
-        AnchorPane.setTopAnchor(pane, 0.0);
-        contentPane.getChildren().setAll(pane);
-        return fxmlLoader.getController();
+    public Object showContent(String path)  {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Pane pane = fxmlLoader.load(getClass().getResource(path).openStream());
+
+            AnchorPane.setBottomAnchor(pane, 0.0);
+            AnchorPane.setLeftAnchor(pane, 0.0);
+            AnchorPane.setRightAnchor(pane, 0.0);
+            AnchorPane.setTopAnchor(pane, 0.0);
+            contentPane.getChildren().setAll(pane);
+            return fxmlLoader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private void showAbout(String path) throws IOException {

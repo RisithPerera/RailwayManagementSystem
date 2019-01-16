@@ -57,6 +57,25 @@ public class Compartment extends SuperModel implements Comparable<Compartment> {
         isAvailable = available;
     }
 
+    //---------------------------- Calculatons -------------------------------------//
+
+    public String getIdText() {
+        return Integer.toString(this.id);
+    }
+
+    public String getClassText() {
+        switch (this.classType){
+            case 1:
+                return "First Class";
+            case 2:
+                return "Second Class";
+            case 3:
+                return "Third Class";
+            default:
+                return "Normal";
+        }
+    }
+
     //---------------------------- Override Methods -----------------------------//
 
     @Override
