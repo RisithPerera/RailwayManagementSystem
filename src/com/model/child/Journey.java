@@ -138,22 +138,37 @@ public class Journey extends SuperModel implements Comparable<Journey> {
         this.arrTime = arrTime;
     }
 
+    //---------------------------- Calculatons -------------------------------------//
+
+    public String getDateTime() {
+        return this.date +",\n"+ this.time;
+    }
+
+    public String getTrainName() {
+        return this.engine.getName();
+    }
+
+    public String getDepDetails() {
+        return this.depStation.getName() +",\n"+ this.depPlatform+",\n"+ this.getDepTime()+" : "+ this.depTime;
+    }
+
+    public String getArrDetails() {
+        return this.arrStation.getName() +",\n"+ this.arrPlatform+",\n"+ this.arrDate+" : "+ this.arrTime;
+    }
+
     //---------------------------- Override Methods -----------------------------//
 
     @Override
     public String toString() {
         return  getDate()        + Symbol.SPLIT +
                 getTime()        + Symbol.SPLIT +
-                getId()          + Symbol.SPLIT +
-                getEngine()      + Symbol.SPLIT +
-                getDepStation()  + Symbol.SPLIT +
+                getEngine().getName()      + Symbol.SPLIT +
+                getDepStation().getName()  + Symbol.SPLIT +
                 getDepPlatform() + Symbol.SPLIT +
                 getDepDate()     + Symbol.SPLIT +
-                getDepTime()     + Symbol.SPLIT +
-                getArrStation()  + Symbol.SPLIT +
+                getArrStation().getName()  + Symbol.SPLIT +
                 getArrPlatform() + Symbol.SPLIT +
-                getArrDate()     + Symbol.SPLIT +
-                getArrTime();
+                getArrDate();
     }
 
     @Override
@@ -175,5 +190,4 @@ public class Journey extends SuperModel implements Comparable<Journey> {
         int hash = Objects.hashCode(String.format("%05d", this.getId()));
         return hash;
     }
-
 }

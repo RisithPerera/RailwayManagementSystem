@@ -128,6 +128,16 @@
     -fx-background-color: #1C154B;
 }
 
+/* ------------------------- engineName Label --------------------------------- */
+
+.engineName {
+    -fx-background-color: #3B377E;
+    -fx-padding: 0 0 0 15;
+    -fx-text-fill: #75F7EB;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 15px;
+}
 
 /* ------------------------- Compartment Seat --------------------------------- */
 

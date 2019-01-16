@@ -70,7 +70,7 @@ public class CommuterViewCtrl implements Initializable {
             new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observable, Object oldVal, Object newVal) {
-                    searchCustomer((String)oldVal, (String)newVal);
+                    searchCommuter((String)oldVal, (String)newVal);
                 }
             }
         );
@@ -78,7 +78,7 @@ public class CommuterViewCtrl implements Initializable {
         setTableMenu();
     }    
 
-    private void searchCustomer(String oldText, String newText) {
+    private void searchCommuter(String oldText, String newText) {
         if ( oldText != null && (newText.length() < oldText.length()) ) {
             commuterTable.getItems().setAll(commuterList);
         }

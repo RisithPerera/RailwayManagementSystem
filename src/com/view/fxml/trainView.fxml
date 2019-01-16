@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="796.0" style="-fx-background-color: rgb(41,40,45);" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.ctrl.CustomerOrderViewCtrl">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="796.0" style="-fx-background-color: #75F7EB;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.ctrl.TrainViewCtrl">
    <children>
-      <HBox spacing="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Label AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="6.0">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="970.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="/com/view/image/Track.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+       <Button mnemonicParsing="false" onAction="#addNewTrainEvent" prefHeight="24.0" prefWidth="100.0" text="New Train" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <HBox layoutX="5.0" layoutY="5.0" spacing="5.0">
          <children>
-            <Button fx:id="viewAllBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewAllBtnEvent" prefHeight="35.0" prefWidth="100.0" text="View All" />
-            <Button fx:id="todayBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#todayBtnEvent" prefHeight="35.0" prefWidth="80.0" text="Today" />
-            <Region prefWidth="10.0" />
-            <ComboBox fx:id="yearCombo" maxHeight="1.7976931348623157E308" onAction="#yearComboEvent" prefWidth="100.0" promptText="Year" />
-            <ComboBox fx:id="monthCombo" maxHeight="1.7976931348623157E308" onAction="#monthComboEvent" prefWidth="150.0" promptText="Month" />
-            <ComboBox fx:id="dayCombo" maxHeight="1.7976931348623157E308" maxWidth="100.0" onAction="#dayComboEvent" prefWidth="100.0" promptText="Day" HBox.hgrow="ALWAYS" />
-            <TextField fx:id="searchCustomerText" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="260.0" promptText="Search By Customer" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allEngineEvent" prefHeight="25.0" prefWidth="70.0" text="Show All" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#availableEngineEvent" prefHeight="25.0" text="Available" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#emptyEngineEvent" prefHeight="25.0" text="Empty Engines" />
+            <TextField fx:id="searchTrainText" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="204.0" promptText="Search By Train" />
          </children>
       </HBox>
-       <Button fx:id="addNewBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addNewBtnEvent" prefHeight="25.0" text="Assemble New Train" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="10.0" maxWidth="1012.0" prefViewportHeight="400.0" prefViewportWidth="615.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0">
+         <content>
+            <VBox fx:id="trainVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="1095.0" spacing="10.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

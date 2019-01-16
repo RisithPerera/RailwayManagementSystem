@@ -36,13 +36,13 @@
                <children>
                   <HBox spacing="3.0">
                      <children>
-                        <AnchorPane style="-fx-background-color: #3B377E;" HBox.hgrow="ALWAYS">
+                        <AnchorPane maxWidth="1.7976931348623157E308" minWidth="500.0" style="-fx-background-color: #3B377E;" HBox.hgrow="ALWAYS">
                            <children>
                               <GridPane alignment="CENTER_LEFT" layoutX="15.0" layoutY="68.0" prefHeight="307.0" prefWidth="182.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="139.0" text="Train Name" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                        <GridPane.margin>
                                           <Insets />
@@ -50,7 +50,7 @@
                                     </Label>
                                     <Label prefWidth="139.0" text="Departure" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                        <GridPane.margin>
                                           <Insets />
@@ -58,7 +58,7 @@
                                     </Label>
                                     <Label maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" text="Departure Platform" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="6">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                        <GridPane.margin>
                                           <Insets />
@@ -66,92 +66,92 @@
                                     </Label>
                                     <Label maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" text="Departure Date/Time" textFill="WHITE" GridPane.rowIndex="7">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" text="Arrival Platform" textFill="WHITE" GridPane.rowIndex="10">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" text="Arrival" textFill="WHITE" GridPane.rowIndex="9">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" text="Arrival Date/Time" textFill="WHITE" GridPane.rowIndex="11">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label prefHeight="17.0" prefWidth="139.0" text="Tickets" textFill="WHITE" GridPane.rowIndex="2">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label prefHeight="17.0" prefWidth="139.0" text="Passenger Name" textFill="WHITE">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label prefHeight="17.0" prefWidth="139.0" text="Passenger Address" textFill="WHITE" GridPane.rowIndex="1">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="nameLabel" text=":" textFill="WHITE" GridPane.columnIndex="1">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="addressLabel" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="ticketLabel" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="trainLabel" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="departureLabel" layoutX="160.0" layoutY="13.0" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="depPlatformLabel" layoutX="160.0" layoutY="45.0" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="depTimeLabel" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="arrivalLabel" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="arrPlatformLabel" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="arrTimeLabel" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                        <font>
-                                          <Font name="Segoe UI Semilight" size="15.0" />
+                                          <Font name="Segoe UI Semilight" size="13.0" />
                                        </font>
                                     </Label>
                                  </children>
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="150.0" minWidth="10.0" prefWidth="22.0" />
+                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="130.0" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="0.0" />
                                  </columnConstraints>
                                  <rowConstraints>
@@ -176,9 +176,9 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <ScrollPane fitToWidth="true" prefViewportHeight="400.0" prefViewportWidth="615.0" style="-fx-background-insets: 0; -fx-padding: 0; -fx-background: #75F7EB;">
+                        <ScrollPane fitToWidth="true" prefHeight="204.0" prefViewportHeight="400.0" prefViewportWidth="500.0" prefWidth="571.0" style="-fx-background-insets: 0; -fx-padding: 0; -fx-background: #75F7EB;">
                            <content>
-                              <FlowPane fx:id="ticketFlowPane" hgap="5.0" prefHeight="150.0" prefWidth="589.0" rowValignment="TOP" snapToPixel="false" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <FlowPane fx:id="ticketFlowPane" hgap="5.0" prefHeight="150.0" prefWidth="500.0" rowValignment="TOP" snapToPixel="false" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <padding>
                                     <Insets left="2.0" />
                                  </padding>

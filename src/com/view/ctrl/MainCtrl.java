@@ -88,10 +88,10 @@ public class MainCtrl {
         try{
             switch((String) menuListView.getSelectionModel().getSelectedItem()){
                 case "Journey" :
-                    //showContent(String.format(View.PATH, View.JOURNEY_VIEW));
+                    showContent(String.format(View.PATH, View.JOURNEY_VIEW));
                     break;
                 case "Train" :
-                    //showContent(String.format(View.PATH, View.TRAIN_VIEW));
+                    showContent(String.format(View.PATH,View.TRAIN_VIEW));
                     break;
                 case "Commuters" :
                     showContent(String.format(View.PATH, View.COMMUTER_VIEW));

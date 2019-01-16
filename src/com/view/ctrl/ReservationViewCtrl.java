@@ -22,6 +22,8 @@ import javafx.scene.layout.*;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class ReservationViewCtrl implements Initializable {
@@ -80,13 +82,45 @@ public class ReservationViewCtrl implements Initializable {
     }
 
     @FXML
-    void dayComboEvent(ActionEvent event) {
+    void viewAllBtnEvent(ActionEvent event) {
+        reservationTable.getItems().setAll(reservationList);
+        reservationTable.getSelectionModel().clearSelection();
+        yearCombo.getSelectionModel().select(null);
+        monthCombo.getSelectionModel().select(null);
+        monthCombo.setDisable(true);
+        dayCombo.getSelectionModel().select(null);
+        dayCombo.setDisable(true);
+    }
 
+    @FXML
+    void yearComboEvent(ActionEvent event) {
+        monthCombo.getSelectionModel().select(null);
+        monthCombo.setDisable(false);
+        dayCombo.getSelectionModel().select(null);
+        dayCombo.setDisable(true);
+        String dateCompare = yearCombo.getSelectionModel().getSelectedItem();
+        updateTableDataByDate(dateCompare);
     }
 
     @FXML
     void monthComboEvent(ActionEvent event) {
+        dayCombo.getSelectionModel().select(null);
+        dayCombo.setDisable(false);
 
+        String dateCompare = yearCombo.getSelectionModel().getSelectedItem()+"-"+
+                String.format("%02d", monthCombo.getSelectionModel().getSelectedIndex()+1);
+        if(monthCombo.getSelectionModel().getSelectedIndex()+1 > 0){
+            updateTableDataByDate(dateCompare);
+        }
+    }
+
+    @FXML
+    void dayComboEvent(ActionEvent event) {
+        String dateCompare = yearCombo.getSelectionModel().getSelectedItem()+"-"+
+                String.format("%02d", monthCombo.getSelectionModel().getSelectedIndex()+1)+"-"+
+                dayCombo.getSelectionModel().getSelectedItem();
+
+        updateTableDataByDate(dateCompare);
     }
 
     @FXML
@@ -99,15 +133,6 @@ public class ReservationViewCtrl implements Initializable {
 
     }
 
-    @FXML
-    void viewAllBtnEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void yearComboEvent(ActionEvent event) {
-
-    }
 
     private void updateTableDataByCommuter(String oldText, String newText) {
         if ( oldText != null && (newText.length() < oldText.length()) ) {
@@ -186,13 +211,27 @@ public class ReservationViewCtrl implements Initializable {
         });
     }
 
+    private void updateTableDataByDate(String dateCompare){
+        try{
+            reservationTable.getItems().setAll(reservationList);
+            Iterator<Reservation> iterator = reservationTable.getItems().iterator();
+            while(iterator.hasNext()){
+                if(! iterator.next().getDate().contains(dateCompare)){
+                    iterator.remove();
+                }
+            }
+        }catch(NullPointerException exception){}
+    }
+
     private void createCompartments(ObservableList<Ticket> reservationTickets){
+        compartmentVBox.getChildren().clear();
+        if(reservationTickets == null) return;
+
         try {
             Ticket ticket = reservationTickets.get(0);
             Compartment compartment = ticket.getSeat().getCompartment();
             ObservableList<Seat> compartmentSeats = SeatClientImpl.getInstance().getCompartmentSeats(compartment);
 
-            compartmentVBox.getChildren().clear();
             grid = new GridPane();
             for (int i = 0; i < Data.COMPARTMENT_SEAT_ROW_COUNT; i++)grid.getColumnConstraints().add(new ColumnConstraints(45));
             for (int i = 0; i < Data.COMPARTMENT_SEAT_COL_COUNT; i++) grid.getRowConstraints().add(new RowConstraints(28));
@@ -206,6 +245,11 @@ public class ReservationViewCtrl implements Initializable {
 
                     if(seat.isAvailbale()) seatLabel.setStyle("-fx-background-color: #97959c");
 
+                    for(Ticket t : reservationTickets){
+                        if((i+1) == t.getSeat().getSeatRow() &&  (j+1) == t.getSeat().getSeatCol()){
+                            seatLabel.setStyle("-fx-background-color: #ff0000");
+                        }
+                    }
                     seatLabel.setMaxHeight(Double.MAX_VALUE);
                     seatLabel.setMaxWidth(Double.MAX_VALUE);
                     seatLabel.setAlignment(Pos.CENTER);
@@ -213,7 +257,6 @@ public class ReservationViewCtrl implements Initializable {
                     index++;
                 }
             }
-
             VBox.setVgrow(grid,Priority.ALWAYS);
             grid.setVgap(6);
             grid.setHgap(5);
@@ -228,6 +271,8 @@ public class ReservationViewCtrl implements Initializable {
 
     private void createTickets(ObservableList<Ticket> reservationTickets) {
         ticketFlowPane.getChildren().clear();
+        if(reservationTickets == null) return;
+
         for (Ticket ticket : reservationTickets) {
             String journey = ticket.getReservation().getJourney().getDepStation().getName() + "-" + ticket.getReservation().getJourney().getArrStation().getName();
             Label journeyLabel = new Label(journey);
@@ -260,4 +305,5 @@ public class ReservationViewCtrl implements Initializable {
             ticketFlowPane.getChildren().add(ticketBox);
         }
     }
+
 }
